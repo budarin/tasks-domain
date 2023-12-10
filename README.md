@@ -12,18 +12,20 @@ yarn add @budarin/tasks-domain
 
 ```ts
 import type { TasksStoreState } from '@budarin/tasks-domain';
-import { tasksStoreFields, initTasksStore, addTask, createTask } from '@budarin/tasks-domain';
+import { tasksStoreState, initTasksStore } from '@budarin/tasks-domain';
 
 import { storeLogger } from './services';
 import { INBOX_KEY, OVERDUE_KEY, RECYCLE_BIN_KEY } from 'entities/index.ts';
 
-useAppStore = create<TasksStoreState && SomeState>()({
-    ...tasksStoreFields,
+type AppState = TasksStoreState && SomeOtherState;
+
+useAppStore = create<AppState>()({
+    ...tasksStoreState,
 
     navigationFilter: {...},
 
     tasks: {
-        ...tasksStoreFields.tasks,
+        ...tasksStoreState.tasks,
 
         idsByDueDate: {},
         idsByCategoryId: {},
@@ -36,6 +38,12 @@ useAppStore = create<TasksStoreState && SomeState>()({
 });
 
 initTasksStore(useAppStore, storeLogger);
+```
+
+extending domain store logic
+
+```ts
+import { addTask, createTask } from '@budarin/tasks-domain';
 
 function storeAddTask(task: unknown): ResultOrError<Task> {
     const addResult = addTask(task);
@@ -45,7 +53,7 @@ function storeAddTask(task: unknown): ResultOrError<Task> {
     }
 
     const state = useAppStore.getState();
-    // additional logic for managing filters
+    // additional logic for managing filters & categories
     {...}
 }
 

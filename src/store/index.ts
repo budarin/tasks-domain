@@ -4,7 +4,7 @@ import { createServiceStub } from '@budarin/service-stub';
 import type { Id, Timestamp } from '../entities/types.js';
 import type { Category, Icon, Priority, Task } from '../entities/index.js';
 
-export const tasksStoreFields = {
+export const tasksStoreState = {
     icons: {
         byId: {},
         ids: [],
