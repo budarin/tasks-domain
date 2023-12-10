@@ -12,15 +12,15 @@
   resolved "https://registry.yarnpkg.com/@budarin/json-rpc-interface/-/json-rpc-interface-1.0.3.tgz#6368c7ece9ed5bfb16bf57d462f6a47a2b9dfd8e"
   integrity sha512-hC6q4XtsKr4slZhqZQLSCOdGUqnWuwuHW6l/U5O4O+tfQBc4rnogXzcqcuUARu0xV0/95cZVRkWqsOsHEpTOOg==
 
-"@budarin/service-stub@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@budarin/service-stub/-/service-stub-1.0.1.tgz#e92ca0d205e163ea4b6cbd27d36bd92f11dd5fd7"
-  integrity sha512-5AVE/TuMWC2EZi4svBa7Bs/0wtqkQNz7OltWTN1CiafbojGZdBI95435ip7XnH34ahCGrd7hCW71RVZudSOAZg==
+"@budarin/service-stub@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@budarin/service-stub/-/service-stub-1.0.2.tgz#e6637bf5de2b335a0e0610e033a2a7692f684cde"
+  integrity sha512-hgcbSRsKuoL8tchVWKru/bEm2ZO5su1Vgo4kmWj/eUKM1rJpZAzdlv1MN01XjZJS3NVwR8+ctMBeEFDWLAkUZw==
 
-"@budarin/validate.ts@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@budarin/validate.ts/-/validate.ts-1.0.4.tgz#c032efad5ef85c85784e8fc51d41ef2bd61e1e16"
-  integrity sha512-cHgEOk+ydFpvxEX1KYN3wa1PawhC3Ya6qp1pQFyXcLbszLVVRQmkw/SetX0tj1I22SExylEoTvTB/eY1IkNgiQ==
+"@budarin/validate.ts@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@budarin/validate.ts/-/validate.ts-1.0.6.tgz#72ce6df54f1e90e61d52db12ddfe410cf80c8633"
+  integrity sha512-cxZ1rDXVgexuYSWM9FGg77t9xRH5mShzOKm9IBO2ziRqpcxVEn7bWwN3lNP+EUZ7gU6GjpO5tyuGxHwxGGfXiQ==
   dependencies:
     "@budarin/json-rpc-interface" "^1.0.2"
 
