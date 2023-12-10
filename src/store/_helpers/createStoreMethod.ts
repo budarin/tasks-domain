@@ -1,5 +1,4 @@
-import type { ResultOrError } from 'domain/types.ts';
-import type { Like, ValidateEntity } from 'entities/index.ts';
+import { Like, ResultOrError, ValidateEntity } from '@budarin/validate.ts';
 
 export interface StoreMethod<T> {
     (obj: Like<T>): ResultOrError<T>;

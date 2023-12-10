@@ -5,57 +5,16 @@ import type { Task } from '../../entities/index.js';
 
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
-import { createExtendedTask } from './utils/createExtendedTask.js';
+import { createExtendedTask } from './helpers/createExtendedTask.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
+import { hasDuplicateTaskId } from './helpers/hasDuplicateTaskId.js';
+import { handleDuplicateTaskId } from './helpers/handleDuplicateTaskId.js';
+import { isPriorityAbsent } from './helpers/isPriorityAbsent.js';
+import { handlePriorityAbsence } from './helpers/handlePriorityAbsence.js';
+import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
+import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
 
-// Constarints:
-// - priority_id должен присутствовать в списке статусов
-// - category_id (если присутствует) должен присутствовать в списке категорий
-// - во все списки ids добавлять id задачи в отсортированном по due-date-time-ts порядке
-
-function hasDuplicateTaskId(state: TasksStoreState, task: Task): boolean {
-    return Boolean(state.tasks.byId[task.task_id]);
-}
-
-function handleDuplicateTaskId(task: Task): ResultOrError<Task> {
-    const ERROR_MSG = 'Добавление дубликата задачи';
-
-    return {
-        error: {
-            message: `${ERROR_MSG}: ${task.task_id}`,
-        },
-    };
-}
-
-function isPriorityAbsent(state: TasksStoreState, task: Task): boolean {
-    return Boolean(state.priorities.byId[task.priority_id] === undefined);
-}
-
-function handlePriorityAbsence(task: Task): ResultOrError<Task> {
-    const ERROR_MSG = 'Добавление задачи с не существующим приоритетом';
-
-    return {
-        error: {
-            message: `${ERROR_MSG}: ${task.priority_id}`,
-        },
-    };
-}
-
-function isCategoryAbsent(state: TasksStoreState, task: Task): boolean {
-    return Boolean(task.category_id !== undefined && state.categories.byId[task.category_id] === undefined);
-}
-
-function handleCategoryAbsence(task: Task): ResultOrError<Task> {
-    const ERROR_MSG = 'Добавление задачи с не существующей категорией';
-
-    return {
-        error: {
-            message: `${ERROR_MSG}: ${task.category_id}`,
-        },
-    };
-}
-
-function updateStateWithNewTask(state: TasksStoreState, task: Task): void {
+function updateState(state: TasksStoreState, task: Task): void {
     const { tasks } = state;
     const { task_id } = task;
     const newTask = createExtendedTask(task);
@@ -88,7 +47,7 @@ function addTaskToStore(task: Task): ResultOrError<Task> {
         return handleCategoryAbsence(task);
     }
 
-    updateStateWithNewTask(state, task);
+    updateState(state, task);
 
     logger.debug('addTask:', task);
 

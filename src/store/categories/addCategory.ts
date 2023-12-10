@@ -4,32 +4,16 @@ import type { TasksStoreState } from '../index.js';
 import type { Category } from '../../entities/index.js';
 
 import { logger, store } from '../index.js';
-import { DUPLICATE_ERROR_MSG } from './utils/consts.js';
 import { validateCategory } from '../../entities/index.js';
-import { hasInvalidCategoryIcon } from './utils/hasInvalidIcon.js';
+import { hasInvalidCategoryIcon } from './helpers/hasInvalidIcon.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
-import { handleInvalidCategoryIcon } from './utils/handleInvalidIcon.js';
-import { hasDuplicateCategoryName } from './utils/hasDuplicateCategoryName.js';
-import { handleDuplicateCategoryName } from './utils/handleDuplicateCategoryName.js';
+import { handleInvalidCategoryIcon } from './helpers/handleInvalidIcon.js';
+import { hasDuplicateCategoryName } from './helpers/hasDuplicateCategoryName.js';
+import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryName.js';
+import { handleDuplicateCategoryId } from './helpers/handleDuplicateCategoryId.js';
+import { hasDuplicateCategoryId } from './helpers/hasDuplicateCategoryId.js';
 
-// Constarints:
-// - icon_id должен присутствовать в списке иконок
-// - добавить пустой массив в idsByCategoryId
-// - имя категории должно быть уникальным
-
-function hasDuplicateCategoryId(state: TasksStoreState, category: Category): boolean {
-    return Boolean(state.categories.byId[category.category_id]);
-}
-
-export function handleDuplicateCategoryId(category: Category): ResultOrError<Category> {
-    return {
-        error: {
-            message: `${DUPLICATE_ERROR_MSG}: ${category.category_id}`,
-        },
-    };
-}
-
-function updateStateWithNewCategory(state: TasksStoreState, category: Category): void {
+function updateState(state: TasksStoreState, category: Category): void {
     const { category_id } = category;
 
     store.setState({
@@ -62,7 +46,7 @@ function addCategoryToStore(category: Category): ResultOrError<Category> {
         return handleInvalidCategoryIcon(category);
     }
 
-    updateStateWithNewCategory(state, category);
+    updateState(state, category);
 
     logger.debug('addCategory:', category);
 

@@ -1,5 +1,5 @@
 import type { ExtendedTask } from '../../index.js';
-import type { Task } from '../../../entities/index.ts';
+import type { Task } from '../../../entities/index.js';
 
 export function createExtendedTask(task: Task): ExtendedTask {
     const { task_id, title, priority_id, category_id, description, due_date_time, deleted, completed } = task;

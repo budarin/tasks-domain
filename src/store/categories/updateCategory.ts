@@ -6,20 +6,20 @@ import type { Category } from '../../entities/index.js';
 
 import { logger, store } from '../index.js';
 import { validateCategory } from '../../entities/index.js';
-import { isCategoryAbsent } from './utils/isCategoryAbsent.js';
-import { hasInvalidCategoryIcon } from './utils/hasInvalidIcon.js';
+import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
+import { hasInvalidCategoryIcon } from './helpers/hasInvalidIcon.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
-import { handleCategoryAbsence } from './utils/handleCategoryAbsence.js';
-import { handleInvalidCategoryIcon } from './utils/handleInvalidIcon.js';
-import { hasDuplicateCategoryName } from './utils/hasDuplicateCategoryName.js';
-import { handleDuplicateCategoryName } from './utils/handleDuplicateCategoryName.js';
+import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
+import { handleInvalidCategoryIcon } from './helpers/handleInvalidIcon.js';
+import { hasDuplicateCategoryName } from './helpers/hasDuplicateCategoryName.js';
+import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryName.js';
 
 // Constarints:
 // - category_id должен существовать
 // - в случае отсутствия иконки - ошибка
 // - имя категории должно быть уникальным
 
-function handleUpdateStateWithUpdatedCategory(state: TasksStoreState, category: Category): void {
+function updateState(state: TasksStoreState, category: Category): void {
     const { category_id } = category;
 
     store.setState({
@@ -51,7 +51,7 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
         return handleDuplicateCategoryName(category);
     }
 
-    handleUpdateStateWithUpdatedCategory(state, category);
+    updateState(state, category);
 
     logger.debug('updateCategory:', category);
 

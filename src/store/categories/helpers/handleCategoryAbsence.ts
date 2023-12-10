@@ -1,5 +1,5 @@
 import type { ResultOrError } from '@budarin/validate.ts';
-import type { Category } from '../../../entities/index.ts';
+import type { Category } from '../../../entities/index.js';
 
 const ERROR_MSG = 'Отсутствие категории в хранилище';
 
