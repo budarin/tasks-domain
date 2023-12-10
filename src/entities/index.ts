@@ -9,6 +9,3 @@ export * from './priority/index.js';
 
 // Task
 export * from './task/index.js';
-
-// Types
-export type * from './types.js';
