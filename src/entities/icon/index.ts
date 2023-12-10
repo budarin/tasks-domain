@@ -1,5 +1,5 @@
 import type { FieldsValidators, LikeExtended, ValidateEntity } from '@budarin/validate.ts';
-import type { Icon } from './types.ts';
+import type { Icon } from './types.js';
 
 import { isInteger, isStringWithLength, mustBeInt, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 

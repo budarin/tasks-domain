@@ -1,4 +1,4 @@
-import type { Id } from '../types.ts';
+import type { Id } from '../types.js';
 
 export type CategoryId = Id;
 export type CategoryIconId = Id;

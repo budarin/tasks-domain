@@ -1,6 +1,6 @@
-import type { Id } from '../types.ts';
+import type { Id } from '../types.js';
 
-import { PiorityAboveNormal, PiorityHigh, PiorityLow, PiorityNormal } from './index.ts';
+import { PiorityAboveNormal, PiorityHigh, PiorityLow, PiorityNormal } from './index.js';
 
 export type PriorityId = Id;
 export type PriorityTitle = PiorityLow | PiorityNormal | PiorityAboveNormal | PiorityHigh;

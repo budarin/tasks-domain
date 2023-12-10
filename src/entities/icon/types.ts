@@ -1,4 +1,4 @@
-import type { Id } from '../_helpers/types.ts';
+import type { Id } from '../types.js';
 
 export type IconId = Id;
 export type IconName = string;

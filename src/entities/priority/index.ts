@@ -1,5 +1,5 @@
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
-import type { Priority } from './types.ts';
+import type { Priority } from './types.js';
 
 import { hexColorvalidator, isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
 

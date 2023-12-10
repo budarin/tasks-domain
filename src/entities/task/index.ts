@@ -11,7 +11,7 @@ import type {
     TaskTitle,
     Task,
     TaskId,
-} from './types.ts';
+} from './types.js';
 import {
     isISODateTimeString,
     isInteger,

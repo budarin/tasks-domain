@@ -1,4 +1,4 @@
-import type { Id } from '../types.ts';
+import type { Id } from '../types.js';
 
 export type TaskId = Id;
 export type TaskTitle = string;

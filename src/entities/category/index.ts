@@ -1,7 +1,7 @@
 import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 
 import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
-import type { Category, CategoryIconId, CategoryId, CategoryName, NewCategory } from './types.ts';
+import type { Category, CategoryIconId, CategoryId, CategoryName, NewCategory } from './types.js';
 
 // const newCategorySchema = {
 //     $id: 'https://budarin/MyTasks/newTaskCategory.json',
