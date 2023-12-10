@@ -1,7 +1,7 @@
 import type { ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.js';
-import type { Category } from '../../entities/index.js';
+import type { Category } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateCategory } from '../../entities/index.js';

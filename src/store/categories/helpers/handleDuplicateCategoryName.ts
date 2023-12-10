@@ -1,5 +1,5 @@
 import type { ResultOrError } from '@budarin/validate.ts';
-import type { Category } from '../../../entities/index.js';
+import type { Category } from '../../../entities/index.ts';
 
 import { DUPLICATE_ERROR_MSG } from './consts.js';
 

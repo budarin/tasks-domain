@@ -12,7 +12,7 @@ import {
     stringHasWrongLength,
     validateEntity,
 } from '@budarin/validate.ts';
-import type { Id } from '../types.js';
+import type { Id } from '../types.ts';
 
 export type TaskId = Id;
 export type TaskTitle = string;

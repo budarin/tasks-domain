@@ -1,5 +1,5 @@
 import type { TasksStoreState } from '../../index.js';
-import type { Category } from '../../../entities/index.js';
+import type { Category } from '../../../entities/index.ts';
 
 // Constarints:
 // - icon_id должен присутствовать в списке иконок

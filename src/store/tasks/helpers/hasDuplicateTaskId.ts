@@ -1,5 +1,5 @@
-import type { TasksStoreState } from '../../index.js';
-import type { Task } from '../../../entities/index.js';
+import type { TasksStoreState } from '../../index.ts';
+import type { Task } from '../../../entities/index.ts';
 
 // Constarints:
 // - priority_id должен присутствовать в списке статусов

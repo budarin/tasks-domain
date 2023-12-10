@@ -1,7 +1,7 @@
 import type { ResultOrError } from '@budarin/validate.ts';
 
-import type { TasksStoreState } from '../index.js';
-import type { Priority } from '../../entities/index.js';
+import type { TasksStoreState } from '../index.ts';
+import type { Priority } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validatePriority } from '../../entities/index.js';

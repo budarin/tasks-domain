@@ -1,6 +1,6 @@
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 import { hexColorvalidator, isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
-import type { Id } from '../types.js';
+import type { Id } from '../types.ts';
 
 export type PriorityId = Id;
 export type PriorityTitle = PiorityLow | PiorityNormal | PiorityAboveNormal | PiorityHigh;

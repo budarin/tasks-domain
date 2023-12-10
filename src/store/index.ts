@@ -1,8 +1,8 @@
 import type { StoreApi, UseBoundStore } from 'zustand';
 import { createServiceStub } from '@budarin/service-stub';
 
-import type { Id, Timestamp } from '../entities/types.js';
-import type { Category, Icon, Priority, Task } from '../entities/index.js';
+import type { Id, Timestamp } from '../entities/types.ts';
+import type { Category, Icon, Priority, Task } from '../entities/index.ts';
 
 export const tasksStoreState = {
     icons: {
