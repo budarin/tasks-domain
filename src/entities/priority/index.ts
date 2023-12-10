@@ -1,7 +1,15 @@
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
-import type { Priority } from './types.js';
-
 import { hexColorvalidator, isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
+import type { Id } from '../types.js';
+
+export type PriorityId = Id;
+export type PriorityTitle = PiorityLow | PiorityNormal | PiorityAboveNormal | PiorityHigh;
+export type PriorityColor = string;
+export type Priority = {
+    priority_id: PriorityId;
+    priority_name: PriorityTitle;
+    color: PriorityColor;
+};
 
 export const PRIORITY_LOW = 'низкий';
 export type PiorityLow = typeof PRIORITY_LOW;

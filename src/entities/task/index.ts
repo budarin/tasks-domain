@@ -1,17 +1,5 @@
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 
-import type {
-    NewTask,
-    TaskCategoryId,
-    TaskCompleted,
-    TaskDeleted,
-    TaskDescription,
-    TaskDueDateTime,
-    TaskPriorityId,
-    TaskTitle,
-    Task,
-    TaskId,
-} from './types.js';
 import {
     isISODateTimeString,
     isInteger,
@@ -24,6 +12,30 @@ import {
     stringHasWrongLength,
     validateEntity,
 } from '@budarin/validate.ts';
+import type { Id } from '../types.js';
+
+export type TaskId = Id;
+export type TaskTitle = string;
+export type TaskPriorityId = Id;
+export type TaskCategoryId = Id | undefined;
+export type TaskDescription = string | undefined;
+export type TaskDueDateTime = string | undefined;
+export type TaskDeleted = boolean | undefined;
+export type TaskCompleted = boolean | undefined;
+
+export type NewTask = {
+    title: TaskTitle;
+    priority_id: TaskPriorityId;
+    category_id?: TaskCategoryId;
+    description?: TaskDescription;
+    due_date_time?: TaskDueDateTime;
+    deleted?: TaskDeleted;
+    completed?: TaskCompleted;
+};
+
+export type Task = {
+    task_id: TaskId;
+} & NewTask;
 
 // export const newTaskSchema: JSONSchemaType<NewTask> = {
 //     $id: 'https://budarin/MyTasks/newTask.json',

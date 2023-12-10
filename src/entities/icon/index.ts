@@ -1,7 +1,14 @@
 import type { FieldsValidators, LikeExtended, ValidateEntity } from '@budarin/validate.ts';
-import type { Icon } from './types.js';
-
 import { isInteger, isStringWithLength, mustBeInt, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
+import type { Id } from '../types.js';
+
+export type IconId = Id;
+export type IconName = string;
+export type Icon = {
+    icon_id: IconId;
+    file_name: IconName;
+};
+export type IconKeys = keyof Icon;
 
 // const iconSchema: JSONSchemaType<Icon> = {
 //     $id: 'https://budarin/MyTasks/categoryIcon.json',
