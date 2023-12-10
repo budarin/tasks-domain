@@ -1,9 +1,10 @@
 import type { ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.js';
-import { validateTask, type Task } from '../../entities/index.js';
+import type { Task } from '../../entities/index.js';
 
 import { logger, store } from '../index.js';
+import { validateTask } from '../../entities/index.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
 function updateState(state: TasksStoreState, task: Task): void {

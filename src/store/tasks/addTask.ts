@@ -5,13 +5,13 @@ import type { Task } from '../../entities/index.js';
 
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
+import { isPriorityAbsent } from './helpers/isPriorityAbsent.js';
+import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
 import { createExtendedTask } from './helpers/createExtendedTask.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 import { hasDuplicateTaskId } from './helpers/hasDuplicateTaskId.js';
 import { handleDuplicateTaskId } from './helpers/handleDuplicateTaskId.js';
-import { isPriorityAbsent } from './helpers/isPriorityAbsent.js';
 import { handlePriorityAbsence } from './helpers/handlePriorityAbsence.js';
-import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
 import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
 
 function updateState(state: TasksStoreState, task: Task): void {

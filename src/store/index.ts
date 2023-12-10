@@ -76,7 +76,9 @@ export type TasksStoreState = {
 };
 
 export type TasksStore = UseBoundStore<StoreApi<TasksStoreState>>;
-export let store: TasksStore = createServiceStub('Попытка использовать tasksStore до его инициализации!') as TasksStore;
+export let store: TasksStore = createServiceStub(
+    'Попытка использовать TasksStore до его инициализации!',
+) as unknown as TasksStore;
 
 interface Logger {
     info: (...data: unknown[]) => void;
@@ -85,7 +87,9 @@ interface Logger {
     debug: (...data: unknown[]) => void;
 }
 
-export let logger: Logger = createServiceStub('Попытка использовать logger до его инициализации!') as unknown as Logger;
+export let logger: Logger = createServiceStub(
+    'Попытка использовать logger в TasksStore до его инициализации!',
+) as unknown as Logger;
 
 interface ExtendedState {
     [key: string]: any;
