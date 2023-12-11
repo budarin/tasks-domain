@@ -24,6 +24,7 @@
         "registry": "https://registry.npmjs.org/"
     },
     "scripts": {
+        "lint": "sh ./tools/ts-lint.sh",
         "build": "sh ./tools/build.sh",
         "patch-version": "npm version patch",
         "prepublish": "npm run build",
