@@ -17,6 +17,7 @@ import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
 function updateState(state: TasksStoreState, task: Task): void {
     const { tasks } = state;
     const { task_id } = task;
+
     const newTask = createExtendedTask(task);
 
     const newState = {

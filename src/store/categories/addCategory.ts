@@ -16,7 +16,7 @@ import { hasDuplicateCategoryId } from './helpers/hasDuplicateCategoryId.js';
 function updateState(state: TasksStoreState, category: Category): void {
     const { category_id } = category;
 
-    store.setState({
+    const newState = {
         ...state,
 
         categories: {
@@ -28,7 +28,9 @@ function updateState(state: TasksStoreState, category: Category): void {
         tasks: {
             ...state.tasks,
         },
-    });
+    };
+
+    store.setState(newState);
 
     logger.debug('Новое состояние store', store.getState());
 }

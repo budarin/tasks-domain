@@ -41,14 +41,16 @@ export function handleDuplicatePriorityName(priority: Priority): ResultOrError<P
 function updateStateWithNewPriority(state: TasksStoreState, priority: Priority): void {
     const { priority_id } = priority;
 
-    store.setState({
+    const newState = {
         ...state,
         priorities: {
             ...state.priorities,
             ids: [...state.priorities.ids, priority_id],
             byId: { ...state.priorities.byId, [priority_id]: priority },
         },
-    });
+    };
+
+    store.setState(newState);
 
     logger.debug('Новое состояние store', store.getState());
 }

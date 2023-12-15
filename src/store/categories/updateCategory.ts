@@ -22,14 +22,16 @@ import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryNa
 function updateState(state: TasksStoreState, category: Category): void {
     const { category_id } = category;
 
-    store.setState({
+    const newState = {
         ...state,
 
         categories: {
             ...state.categories,
             byId: { ...state.categories.byId, [category_id]: category },
         },
-    });
+    };
+
+    store.setState(newState);
 
     logger.debug('Новое состояние store', store.getState());
 }

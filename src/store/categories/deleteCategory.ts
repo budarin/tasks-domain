@@ -32,7 +32,7 @@ function updateState(state: TasksStoreState, category: Category): void {
     const { category_id } = category;
     const { [category_id]: _, ...categoryByIdWothoudDeleted } = state.categories.byId;
 
-    store.setState({
+    const newState = {
         ...state,
 
         categories: {
@@ -40,7 +40,9 @@ function updateState(state: TasksStoreState, category: Category): void {
             byId: categoryByIdWothoudDeleted,
             ids: state.categories.ids.filter((id) => id !== category_id),
         },
-    });
+    };
+
+    store.setState(newState);
 
     logger.debug('Новое состояние store', store.getState());
 }
