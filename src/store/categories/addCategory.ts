@@ -31,8 +31,6 @@ function updateState(state: TasksStoreState, category: Category): void {
     };
 
     store.setState(newState);
-
-    logger.debug('Новое состояние store', store.getState());
 }
 
 function addCategoryToStore(category: Category): ResultOrError<Category> {
@@ -52,7 +50,7 @@ function addCategoryToStore(category: Category): ResultOrError<Category> {
 
     updateState(state, category);
 
-    logger.debug('addCategory:', category);
+    logger.debug('addCategory:', category, store.getState());
 
     return { result: category };
 }

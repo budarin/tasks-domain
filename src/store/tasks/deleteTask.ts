@@ -25,8 +25,6 @@ function updateState(state: TasksStoreState, task: Task): void {
     };
 
     store.setState(newState);
-
-    logger.debug('Новое состояние store', store.getState());
 }
 
 function deleteTaskFromStore(task: Task): ResultOrError<Task> {
@@ -43,7 +41,7 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
 
     updateState(state, task);
 
-    logger.debug('addTask:', task);
+    logger.debug('addTask:', task, store.getState());
 
     return { result: task };
 }
