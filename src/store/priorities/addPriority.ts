@@ -49,6 +49,8 @@ function updateStateWithNewPriority(state: TasksStoreState, priority: Priority):
             byId: { ...state.priorities.byId, [priority_id]: priority },
         },
     });
+
+    logger.debug('Новое состояние store', store.getState());
 }
 
 function addPriorityToStore(priority: Priority): ResultOrError<Priority> {

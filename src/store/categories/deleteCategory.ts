@@ -41,6 +41,8 @@ function updateState(state: TasksStoreState, category: Category): void {
             ids: state.categories.ids.filter((id) => id !== category_id),
         },
     });
+
+    logger.debug('Новое состояние store', store.getState());
 }
 
 function deleteCategoryFromStore(category: Category): ResultOrError<Category> {

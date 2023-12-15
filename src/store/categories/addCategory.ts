@@ -29,6 +29,8 @@ function updateState(state: TasksStoreState, category: Category): void {
             ...state.tasks,
         },
     });
+
+    logger.debug('Новое состояние store', store.getState());
 }
 
 function addCategoryToStore(category: Category): ResultOrError<Category> {

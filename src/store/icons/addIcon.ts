@@ -49,6 +49,8 @@ function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): void {
             byId: { ...state.icons.byId, [icon_id]: icon },
         },
     });
+
+    logger.debug('Новое состояние store', store.getState());
 }
 
 function addIconToStore(icon: Icon): ResultOrError<Icon> {

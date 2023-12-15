@@ -30,6 +30,8 @@ function updateState(state: TasksStoreState, category: Category): void {
             byId: { ...state.categories.byId, [category_id]: category },
         },
     });
+
+    logger.debug('Новое состояние store', store.getState());
 }
 
 function updateCategoryInStore(category: Category): ResultOrError<Category> {
