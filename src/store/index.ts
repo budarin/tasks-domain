@@ -100,4 +100,6 @@ export function initTasksStore(
 ): void {
     store = tasksStore;
     logger = taskLogger;
+
+    logger.debug('Доменное хранилище инициализировано', store.getState());
 }
