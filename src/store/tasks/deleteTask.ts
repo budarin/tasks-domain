@@ -7,6 +7,18 @@ import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
+function handleNonExistingTask(task: Task): ResultOrError<Task> {
+    const errorMsg = `Попытка удаления несуществующей задачи: ${task.task_id}`;
+
+    logger.error(errorMsg);
+
+    return {
+        error: {
+            message: errorMsg,
+        },
+    };
+}
+
 function updateState(state: TasksStoreState, task: Task): void {
     const { tasks } = state;
     const { task_id } = task;
@@ -32,11 +44,7 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
 
     // есть ли задача в хранилище?
     if (!state.tasks.byId[task.task_id]) {
-        return {
-            error: {
-                message: `Попытка удаления несуществующей задачи: ${task.task_id}`,
-            },
-        };
+        return handleNonExistingTask(task);
     }
 
     updateState(state, task);
