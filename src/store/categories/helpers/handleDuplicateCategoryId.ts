@@ -5,7 +5,7 @@ import { logger } from '../../index.js';
 import { DUPLICATE_ERROR_MSG } from './consts.js';
 
 export function handleDuplicateCategoryId(category: Category): ResultOrError<Category> {
-    const errorMsg = `${DUPLICATE_ERROR_MSG}: ${category.category_id}`;
+    const errorMsg = `${DUPLICATE_ERROR_MSG}: ${category}`;
 
     logger.error(errorMsg);
 

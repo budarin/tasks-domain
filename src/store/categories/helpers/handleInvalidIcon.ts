@@ -5,7 +5,7 @@ import { logger } from '../../index.js';
 const ERROR_MSG = 'Модификация категории с не существующей иконкой';
 
 export function handleInvalidCategoryIcon(category: Category): ResultOrError<Category> {
-    const errorMsg = `${ERROR_MSG} id = ${category.icon_id}`;
+    const errorMsg = `${ERROR_MSG} id = ${category}`;
 
     logger.error(errorMsg);
 

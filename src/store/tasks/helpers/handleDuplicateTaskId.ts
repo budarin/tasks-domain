@@ -6,7 +6,7 @@ import { logger } from '../../index.js';
 const ERROR_MSG = 'Добавление дубликата задачи';
 
 export function handleDuplicateTaskId(task: Task): ResultOrError<Task> {
-    const errorMsg = `${ERROR_MSG}: ${task.task_id}`;
+    const errorMsg = `${ERROR_MSG}: ${task}`;
 
     logger.error(errorMsg);
 

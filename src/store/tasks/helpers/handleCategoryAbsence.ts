@@ -5,7 +5,7 @@ import { logger } from '../../index.js';
 const ERROR_MSG = 'Добавление задачи с не существующей категорией';
 
 export function handleCategoryAbsence(task: Task): ResultOrError<Task> {
-    const errorMsg = `${ERROR_MSG}: ${task.category_id}`;
+    const errorMsg = `${ERROR_MSG}: ${task}`;
 
     logger.error(errorMsg);
 
