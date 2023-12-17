@@ -14,9 +14,13 @@ function hasDuplicatePriorityId(state: TasksStoreState, priority: Priority): boo
 const ERROR_MSG = 'Добавление дубликата приоритета';
 
 function handleDuplicatePriorityId(priority: Priority): ResultOrError<Priority> {
+    const errorMsg = `${ERROR_MSG}: ${priority.priority_id}`;
+
+    logger.error(errorMsg);
+
     return {
         error: {
-            message: `${ERROR_MSG}: ${priority.priority_id}`,
+            message: errorMsg,
         },
     };
 }
