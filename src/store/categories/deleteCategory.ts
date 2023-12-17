@@ -21,13 +21,12 @@ function isCategoryUsed(state: TasksStoreState, category: Category): boolean {
 const ERROR_MSG = 'Удаление категории, которая используется';
 
 function handleUsedCategory(category: Category): ResultOrError<Category> {
-    const errorMsg = `${ERROR_MSG}: ${category}`;
-
-    logger.error(errorMsg);
+    logger.error(ERROR_MSG, category);
 
     return {
         error: {
-            message: errorMsg,
+            message: ERROR_MSG,
+            data: category,
         },
     };
 }

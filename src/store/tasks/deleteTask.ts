@@ -7,14 +7,15 @@ import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
-function handleNonExistingTask(task: Task): ResultOrError<Task> {
-    const errorMsg = `Попытка удаления несуществующей задачи: ${task}`;
+const errorMsg = `Попытка удаления несуществующей задачи`;
 
-    logger.error(errorMsg);
+function handleNonExistingTask(task: Task): ResultOrError<Task> {
+    logger.error(errorMsg, task);
 
     return {
         error: {
             message: errorMsg,
+            data: task,
         },
     };
 }

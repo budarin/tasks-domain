@@ -14,13 +14,12 @@ function hasDuplicateIconId(state: TasksStoreState, icon: Icon): boolean {
 const ERROR_MSG = 'Добавление дубликата иконки';
 
 function handleDuplicateIconId(icon: Icon): ResultOrError<Icon> {
-    const errorMsg = `${ERROR_MSG}: ${icon}`;
-
-    logger.error(errorMsg);
+    logger.error(ERROR_MSG, icon);
 
     return {
         error: {
-            message: errorMsg,
+            message: ERROR_MSG,
+            data: icon,
         },
     };
 }
@@ -35,13 +34,12 @@ export function hasDuplicateIconFileName(state: TasksStoreState, icon: Icon): bo
 }
 
 export function handleDuplicateIconFileName(icon: Icon): ResultOrError<Icon> {
-    const errorMsg = `${ERROR_MSG}: ${icon}`;
-
-    logger.error(errorMsg);
+    logger.error(ERROR_MSG, icon);
 
     return {
         error: {
-            message: errorMsg,
+            message: ERROR_MSG,
+            data: icon,
         },
     };
 }

@@ -6,13 +6,12 @@ import { logger } from '../../index.js';
 const ERROR_MSG = 'Отсутствие категории в хранилище';
 
 export function handleCategoryAbsence(category: Category): ResultOrError<Category> {
-    const errorMsg = `${ERROR_MSG}: ${category}`;
-
-    logger.error(errorMsg);
+    logger.error(ERROR_MSG, category);
 
     return {
         error: {
-            message: errorMsg,
+            message: ERROR_MSG,
+            data: category,
         },
     };
 }
