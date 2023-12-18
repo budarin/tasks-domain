@@ -1,11 +1,11 @@
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 
 import {
+    isBoolean,
     isISODateTimeString,
     isInteger,
     isStringWithLength,
-    isUndefinedOrBoolean,
-    isUndefinedOrInteger,
+    isUndefinedOr,
     mustBeInt,
     mustBeUndefinedOrBoolean,
     mustBeUndefinedOrInt,
@@ -135,7 +135,7 @@ export const newTaskFields: FieldsValidators = {
         required: true,
     },
     category_id: {
-        validators: [[isUndefinedOrInteger, mustBeUndefinedOrInt(entityName, 'category_id')]],
+        validators: [[isUndefinedOr(isInteger), mustBeUndefinedOrInt(entityName, 'category_id')]],
     },
     description: {
         validators: [
@@ -147,14 +147,17 @@ export const newTaskFields: FieldsValidators = {
     },
     due_date_time: {
         validators: [
-            [isISODateTimeString, `Свойство сущности ${entityName} "due_date_time" должно быть датой в формате ISO`],
+            [
+                isUndefinedOr(isISODateTimeString),
+                `Свойство сущности ${entityName} "due_date_time" должно быть датой в формате ISO`,
+            ],
         ],
     },
     deleted: {
-        validators: [[isUndefinedOrBoolean, mustBeUndefinedOrBoolean(entityName, 'deleted')]],
+        validators: [[isUndefinedOr(isBoolean), mustBeUndefinedOrBoolean(entityName, 'deleted')]],
     },
     completed: {
-        validators: [[isUndefinedOrBoolean, mustBeUndefinedOrBoolean(entityName, 'completed')]],
+        validators: [[isUndefinedOr(isBoolean), mustBeUndefinedOrBoolean(entityName, 'completed')]],
     },
 };
 
