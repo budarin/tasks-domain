@@ -13,3 +13,5 @@ export * from './store/priorities/addPriority.js';
 export * from './store/tasks/addTask.js';
 export * from './store/tasks/deleteTask.js';
 export * from './store/tasks/updateTask.js';
+
+export * from '@budarin/validate.ts';
