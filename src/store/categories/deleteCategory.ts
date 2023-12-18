@@ -5,9 +5,9 @@ import type { Category } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateCategory } from '../../entities/index.js';
-import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
+import { isCategoryNotFound } from './helpers/isCategoryNotFound.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
-import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
+import { handleCategoryNotFound } from './helpers/handleCategoryNotFound.js';
 
 // Constarints:
 // - нельзя удалить категорию если ее Id отсутствует в хранилище
@@ -51,8 +51,8 @@ function updateState(state: TasksStoreState, category: Category): void {
 function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
     const state = store.getState();
 
-    if (isCategoryAbsent(state, category)) {
-        return handleCategoryAbsence(category);
+    if (isCategoryNotFound(state, category)) {
+        return handleCategoryNotFound(category);
     }
 
     if (isCategoryUsed(state, category)) {

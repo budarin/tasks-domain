@@ -5,20 +5,11 @@ import type { Task } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
+import { isTaskNotFound } from './helpers/isTaskNotFound.js';
+import { handleTaskNotFound } from './handleTaskNotFound.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
-const errorMsg = `Попытка удаления несуществующей задачи`;
-
-function handleNonExistingTask(task: Task): ResultOrError<Task> {
-    logger.error(errorMsg, task);
-
-    return {
-        error: {
-            message: errorMsg,
-            data: task,
-        },
-    };
-}
+export const errorMsg = 'Задача не найдена';
 
 function updateState(state: TasksStoreState, task: Task): void {
     const { tasks } = state;
@@ -44,8 +35,8 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
     const state = store.getState();
 
     // есть ли задача в хранилище?
-    if (!state.tasks.byId[task.task_id]) {
-        return handleNonExistingTask(task);
+    if (isTaskNotFound(state, task)) {
+        return handleTaskNotFound(task);
     }
 
     updateState(state, task);

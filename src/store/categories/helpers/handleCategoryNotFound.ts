@@ -1,11 +1,11 @@
 import type { ResultOrError } from '@budarin/validate.ts';
-import type { Category } from '../../../entities/index.ts';
+import type { Category } from '../../../entities/index.js';
 
 import { logger } from '../../index.js';
 
-const ERROR_MSG = 'Отсутствие категории в хранилище';
+const ERROR_MSG = 'Категория не найдена';
 
-export function handleCategoryAbsence(category: Category): ResultOrError<Category> {
+export function handleCategoryNotFound(category: Category): ResultOrError<Category> {
     logger.error(ERROR_MSG, category);
 
     return {

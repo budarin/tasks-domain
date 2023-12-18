@@ -6,11 +6,11 @@ import type { Category } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateCategory } from '../../entities/index.js';
-import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
-import { hasInvalidCategoryIcon } from './helpers/hasInvalidIcon.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
-import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
+import { hasInvalidCategoryIcon } from './helpers/hasInvalidIcon.js';
+import { isCategoryIdNotFound } from './helpers/isCategoryIdNotFound.js';
 import { handleInvalidCategoryIcon } from './helpers/handleInvalidIcon.js';
+import { handleCategoryNotFound } from './helpers/handleCategoryNotFound.js';
 import { hasDuplicateCategoryName } from './helpers/hasDuplicateCategoryName.js';
 import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryName.js';
 
@@ -41,8 +41,8 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
         return { result: category };
     }
 
-    if (isCategoryAbsent(state, category)) {
-        return handleCategoryAbsence(category);
+    if (isCategoryIdNotFound(state, category)) {
+        return handleCategoryNotFound(category);
     }
 
     if (hasInvalidCategoryIcon(state, category)) {
