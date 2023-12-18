@@ -140,7 +140,7 @@ export const newTaskFields: FieldsValidators = {
     description: {
         validators: [
             [
-                isStringWithLength(description_min_length, description_max_length),
+                isUndefinedOr(isStringWithLength(description_min_length, description_max_length)),
                 stringHasWrongLength(entityName, 'description', description_min_length, description_max_length),
             ],
         ],
