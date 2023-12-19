@@ -6,7 +6,7 @@ import type { Task } from '../../entities/index.ts';
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
 import { isTaskNotFound } from './helpers/isTaskNotFound.js';
-import { handleTaskNotFound } from './handleTaskNotFound.js';
+import { handleTaskNotFound } from './helpers/handleTaskNotFound.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
 export const errorMsg = 'Задача не найдена';
@@ -23,7 +23,9 @@ function updateState(state: TasksStoreState, task: Task): void {
 
         tasks: {
             ...tasks,
+
             ids: [...restIds],
+
             byId: { ...restById },
         },
     };

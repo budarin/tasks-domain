@@ -27,7 +27,11 @@ function updateState(state: TasksStoreState, category: Category): void {
 
         categories: {
             ...state.categories,
-            byId: { ...state.categories.byId, [category_id]: category },
+
+            byId: {
+                ...state.categories.byId,
+                [category_id]: category,
+            },
         },
     };
 

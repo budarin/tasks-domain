@@ -33,15 +33,17 @@ function handleUsedCategory(category: Category): ResultOrError<Category> {
 
 function updateState(state: TasksStoreState, category: Category): void {
     const { category_id } = category;
-    const { [category_id]: _, ...categoryByIdWothoudDeleted } = state.categories.byId;
+    const { [category_id]: _, ...restById } = state.categories.byId;
 
     const newState = {
         ...state,
 
         categories: {
             ...state.categories,
-            byId: categoryByIdWothoudDeleted,
+
             ids: state.categories.ids.filter((id) => id !== category_id),
+
+            byId: { ...restById },
         },
     };
 

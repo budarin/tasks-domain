@@ -49,10 +49,16 @@ function updateStateWithNewPriority(state: TasksStoreState, priority: Priority):
 
     const newState = {
         ...state,
+
         priorities: {
             ...state.priorities,
+
             ids: [...state.priorities.ids, priority_id],
-            byId: { ...state.priorities.byId, [priority_id]: priority },
+
+            byId: {
+                ...state.priorities.byId,
+                [priority_id]: priority,
+            },
         },
     };
 

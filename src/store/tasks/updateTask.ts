@@ -5,7 +5,7 @@ import type { Task } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
-import { handleTaskNotFound } from './handleTaskNotFound.js';
+import { handleTaskNotFound } from './helpers/handleTaskNotFound.js';
 import { isPriorityAbsent } from './helpers/isPriorityAbsent.js';
 import { isTaskIdNotFound } from './helpers/isTaskIdNotFound.js';
 import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
@@ -23,7 +23,11 @@ function updateState(state: TasksStoreState, task: Task): void {
 
         tasks: {
             ...tasks,
-            byId: { ...tasks.byId, [task_id]: createExtendedTask(task) },
+
+            byId: {
+                ...tasks.byId,
+                [task_id]: createExtendedTask(task),
+            },
         },
     };
 

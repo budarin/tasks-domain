@@ -21,12 +21,13 @@ function updateState(state: TasksStoreState, category: Category): void {
 
         categories: {
             ...state.categories,
-            ids: [...state.categories.ids, category_id],
-            byId: { ...state.categories.byId, [category_id]: category },
-        },
 
-        tasks: {
-            ...state.tasks,
+            ids: [...state.categories.ids, category_id],
+
+            byId: {
+                ...state.categories.byId,
+                [category_id]: category,
+            },
         },
     };
 

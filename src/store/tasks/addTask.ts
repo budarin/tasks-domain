@@ -25,8 +25,13 @@ function updateState(state: TasksStoreState, task: Task): void {
 
         tasks: {
             ...tasks,
+
             ids: [...tasks.ids, task_id],
-            byId: { ...tasks.byId, [task_id]: newTask },
+
+            byId: {
+                ...tasks.byId,
+                [task_id]: newTask,
+            },
         },
     };
 

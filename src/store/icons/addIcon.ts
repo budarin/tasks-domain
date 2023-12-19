@@ -51,8 +51,13 @@ function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): void {
         ...state,
         icons: {
             ...state.icons,
+
             ids: [...state.icons.ids, icon_id],
-            byId: { ...state.icons.byId, [icon_id]: icon },
+
+            byId: {
+                ...state.icons.byId,
+                [icon_id]: icon,
+            },
         },
     };
 
