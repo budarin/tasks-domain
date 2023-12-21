@@ -1,5 +1,13 @@
 export * from './entities/index.js';
-export * from './store/index.js';
+export type {
+    IconState,
+    PriorityState,
+    CategoryState,
+    ExtendedTask,
+    TasksState,
+    TasksStoreState,
+} from './store/index.js';
+export { tasksStoreState, initTasksStore } from './store/index.js';
 
 // Category
 export * from './store/categories/addCategory.js';
