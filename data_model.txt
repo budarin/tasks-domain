@@ -1,0 +1,32 @@
+https://dbdiagram.io/d
+
+Table icons {
+  icon_id integer [primary key]
+  file_name varchar
+}
+
+Table categories {
+  category_id integer [primary key]
+  icon_id integer
+  category_name varchar
+}
+Ref: categories.icon_id < icons.icon_id
+
+Table priorities {
+  priority_id integer [primary key]
+  priority_name varchar
+  color varchar
+}
+
+Table tasks {
+  task_id integer [primary key]
+  title varchar
+  priority_id integer
+  category_id integer
+  description varchar
+  due_date_time timestamp
+  deleted boolean
+  completed boolean
+}
+Ref: tasks.priority_id < priorities.priority_id
+Ref: tasks.category_id < categories.category_id
