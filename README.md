@@ -1,6 +1,15 @@
 # tasks-domain
 
-Задача: описать, хранить и использовать многократно в разных проектах сущности для обработки Задач.
+Contains a description of the entities
+
+-   icon
+-   priority
+-   task category
+-   task
+
+their types, constructors, object extraction and validation methods.
+
+It also describes the structure of storing entities in the application state store and methods for changing them for reuse in various applications.
 
 ## Install
 
@@ -14,8 +23,8 @@ yarn add @budarin/tasks-domain
 import type { TasksStoreState } from '@budarin/tasks-domain';
 import { tasksStoreState, initTasksStore } from '@budarin/tasks-domain';
 
-import { storeLogger } from './services';
-import { INBOX_KEY, OVERDUE_KEY, RECYCLE_BIN_KEY } from 'entities/index.ts';
+import { storeLogger } from '../app/providers';
+import { INBOX_KEY, OVERDUE_KEY, RECYCLE_BIN_KEY } from '../app/entities/index.ts';
 
 type AppState = TasksStoreState && SomeOtherState;
 
@@ -37,10 +46,12 @@ useAppStore = create<AppState>()({
     },
 });
 
+// you need to initialize store first after creating useAppStore
+// with the instance of real store for using in entities methods and with the logger for store
 initTasksStore(useAppStore, storeLogger);
 ```
 
-extending domain store logic
+extending domain store logic in use cases
 
 ```ts
 import { addTask, createTask } from '@budarin/tasks-domain';
@@ -57,7 +68,7 @@ function storeAddTask(task: unknown): ResultOrError<Task> {
     {...}
 }
 
-
+// using extended logic
 storeAddTask(createTask({
     taskId: 1,
     title: 'TaskTitle',
