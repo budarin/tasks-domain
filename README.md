@@ -11,6 +11,10 @@ their types, constructors, object extraction and validation methods.
 
 It also describes the structure of storing entities in the application state store and methods for changing them for reuse in various applications.
 
+## Data model
+
+![Data model](data_schema.png)
+
 ## Install
 
 ```bash
