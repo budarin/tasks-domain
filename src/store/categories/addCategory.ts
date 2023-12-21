@@ -13,10 +13,10 @@ import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryNa
 import { handleDuplicateCategoryId } from './helpers/handleDuplicateCategoryId.js';
 import { hasDuplicateCategoryId } from './helpers/hasDuplicateCategoryId.js';
 
-function updateState(state: TasksStoreState, category: Category): void {
+function updateState(state: TasksStoreState, category: Category): TasksStoreState {
     const { category_id } = category;
 
-    const newState = {
+    return {
         ...state,
 
         categories: {
@@ -30,8 +30,6 @@ function updateState(state: TasksStoreState, category: Category): void {
             },
         },
     };
-
-    store.setState(newState);
 }
 
 function addCategoryToStore(category: Category): ResultOrError<Category> {
@@ -49,7 +47,8 @@ function addCategoryToStore(category: Category): ResultOrError<Category> {
         return handleInvalidCategoryIcon(category);
     }
 
-    updateState(state, category);
+    const newState = updateState(state, category);
+    store.setState(newState);
 
     logger.debug('addCategory:', category, store.getState());
 

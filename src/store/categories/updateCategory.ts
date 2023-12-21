@@ -19,10 +19,10 @@ import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryNa
 // - в случае отсутствия иконки - ошибка
 // - имя категории должно быть уникальным
 
-function updateState(state: TasksStoreState, category: Category): void {
+function updateState(state: TasksStoreState, category: Category): TasksStoreState {
     const { category_id } = category;
 
-    const newState = {
+    return {
         ...state,
 
         categories: {
@@ -34,8 +34,6 @@ function updateState(state: TasksStoreState, category: Category): void {
             },
         },
     };
-
-    store.setState(newState);
 }
 
 function updateCategoryInStore(category: Category): ResultOrError<Category> {
@@ -57,7 +55,8 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
         return handleDuplicateCategoryName(category);
     }
 
-    updateState(state, category);
+    const newState = updateState(state, category);
+    store.setState(newState);
 
     logger.debug('updateCategory:', category, store.getState());
 

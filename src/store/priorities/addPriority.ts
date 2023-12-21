@@ -44,10 +44,10 @@ export function handleDuplicatePriorityName(priority: Priority): ResultOrError<P
     };
 }
 
-function updateStateWithNewPriority(state: TasksStoreState, priority: Priority): void {
+function updateStateWithNewPriority(state: TasksStoreState, priority: Priority): TasksStoreState {
     const { priority_id } = priority;
 
-    const newState = {
+    return {
         ...state,
 
         priorities: {
@@ -61,8 +61,6 @@ function updateStateWithNewPriority(state: TasksStoreState, priority: Priority):
             },
         },
     };
-
-    store.setState(newState);
 }
 
 function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
@@ -72,7 +70,8 @@ function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
         return handleDuplicatePriorityId(priority);
     }
 
-    updateStateWithNewPriority(state, priority);
+    const newState = updateStateWithNewPriority(state, priority);
+    store.setState(newState);
 
     logger.debug('addPriority:', priority, store.getState());
 

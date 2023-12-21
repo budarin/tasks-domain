@@ -31,11 +31,11 @@ function handleUsedCategory(category: Category): ResultOrError<Category> {
     };
 }
 
-function updateState(state: TasksStoreState, category: Category): void {
+function updateState(state: TasksStoreState, category: Category): TasksStoreState {
     const { category_id } = category;
     const { [category_id]: _, ...restById } = state.categories.byId;
 
-    const newState = {
+    return {
         ...state,
 
         categories: {
@@ -46,8 +46,6 @@ function updateState(state: TasksStoreState, category: Category): void {
             byId: { ...restById },
         },
     };
-
-    store.setState(newState);
 }
 
 function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
@@ -61,7 +59,8 @@ function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
         return handleUsedCategory(category);
     }
 
-    updateState(state, category);
+    const newState = updateState(state, category);
+    store.setState(newState);
 
     logger.debug('deleteCategory:', category, store.getState());
 

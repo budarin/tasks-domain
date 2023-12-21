@@ -44,10 +44,10 @@ export function handleDuplicateIconFileName(icon: Icon): ResultOrError<Icon> {
     };
 }
 
-function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): void {
+function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): TasksStoreState {
     const { icon_id } = icon;
 
-    const newState = {
+    return {
         ...state,
         icons: {
             ...state.icons,
@@ -60,8 +60,6 @@ function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): void {
             },
         },
     };
-
-    store.setState(newState);
 }
 
 function addIconToStore(icon: Icon): ResultOrError<Icon> {
@@ -75,7 +73,8 @@ function addIconToStore(icon: Icon): ResultOrError<Icon> {
         return handleDuplicateIconFileName(icon);
     }
 
-    updateStateWithNewIcon(state, icon);
+    const newState = updateStateWithNewIcon(state, icon);
+    store.setState(newState);
 
     logger.debug('addIcon:', icon, store.getState());
 

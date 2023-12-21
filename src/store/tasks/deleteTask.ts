@@ -11,14 +11,14 @@ import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
 export const errorMsg = 'Задача не найдена';
 
-function updateState(state: TasksStoreState, task: Task): void {
+function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     const { tasks } = state;
     const { task_id } = task;
 
     const restIds = tasks.ids.filter((id) => id !== task_id);
     const { [task_id]: _, ...restById } = tasks.byId;
 
-    const newState = {
+    return {
         ...state,
 
         tasks: {
@@ -29,8 +29,6 @@ function updateState(state: TasksStoreState, task: Task): void {
             byId: { ...restById },
         },
     };
-
-    store.setState(newState);
 }
 
 function deleteTaskFromStore(task: Task): ResultOrError<Task> {
@@ -41,7 +39,8 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
         return handleTaskNotFound(task);
     }
 
-    updateState(state, task);
+    const newState = updateState(state, task);
+    store.setState(newState);
 
     logger.debug('addTask:', task, store.getState());
 

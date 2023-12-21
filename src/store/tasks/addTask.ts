@@ -14,13 +14,13 @@ import { handleDuplicateTaskId } from './helpers/handleDuplicateTaskId.js';
 import { handlePriorityAbsence } from './helpers/handlePriorityAbsence.js';
 import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
 
-function updateState(state: TasksStoreState, task: Task): void {
+function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     const { tasks } = state;
     const { task_id } = task;
 
     const newTask = createExtendedTask(task);
 
-    const newState = {
+    return {
         ...state,
 
         tasks: {
@@ -34,8 +34,6 @@ function updateState(state: TasksStoreState, task: Task): void {
             },
         },
     };
-
-    store.setState(newState);
 }
 
 function addTaskToStore(task: Task): ResultOrError<Task> {
@@ -53,7 +51,8 @@ function addTaskToStore(task: Task): ResultOrError<Task> {
         return handleCategoryAbsence(task);
     }
 
-    updateState(state, task);
+    const newState = updateState(state, task);
+    store.setState(newState);
 
     logger.debug('addTask:', task, store.getState());
 
