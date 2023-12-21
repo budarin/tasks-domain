@@ -1,4 +1,5 @@
 import { Like, ResultOrError, ValidateEntity } from '@budarin/validate.ts';
+import { logger } from '../index.js';
 
 export interface StoreMethod<T> {
     (obj: Like<T>): ResultOrError<T>;
@@ -13,6 +14,8 @@ export function createStoreMethod<T>(
         const result = validateFn(obj);
 
         if (result.error) {
+            logger.error(result.error.message, result.error.data);
+
             return result;
         }
 
