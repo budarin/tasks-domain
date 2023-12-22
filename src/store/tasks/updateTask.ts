@@ -47,10 +47,10 @@ function updateTasksStore(task: Task): ResultOrError<Task> {
         return handleCategoryAbsence(task);
     }
 
-    const newState = updateState(state, task);
+    const nextState = updateState(state, task);
 
-    if (newState !== state) {
-        store.setState(newState);
+    if (nextState !== state) {
+        store.setState(nextState);
         logger.debug('updateTask:', task);
     }
 

@@ -55,10 +55,10 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
         return handleDuplicateCategoryName(category);
     }
 
-    const newState = updateState(state, category);
+    const nextState = updateState(state, category);
 
-    if (newState !== state) {
-        store.setState(newState);
+    if (nextState !== state) {
+        store.setState(nextState);
         logger.debug('updateCategory:', category);
     }
 

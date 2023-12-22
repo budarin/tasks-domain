@@ -59,10 +59,10 @@ function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
         return handleUsedCategory(category);
     }
 
-    const newState = updateState(state, category);
+    const nextState = updateState(state, category);
 
-    if (newState !== state) {
-        store.setState(newState);
+    if (nextState !== state) {
+        store.setState(nextState);
         logger.debug('deleteCategory:', category);
     }
 

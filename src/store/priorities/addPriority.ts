@@ -70,10 +70,10 @@ function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
         return handleDuplicatePriorityId(priority);
     }
 
-    const newState = updateStateWithNewPriority(state, priority);
+    const nextState = updateStateWithNewPriority(state, priority);
 
-    if (newState !== state) {
-        store.setState(newState);
+    if (nextState !== state) {
+        store.setState(nextState);
         logger.debug('addPriority:', priority);
     }
 

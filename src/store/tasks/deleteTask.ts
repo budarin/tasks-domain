@@ -39,10 +39,10 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
         return handleTaskNotFound(task);
     }
 
-    const newState = updateState(state, task);
+    const nextState = updateState(state, task);
 
-    if (newState !== state) {
-        store.setState(newState);
+    if (nextState !== state) {
+        store.setState(nextState);
         logger.debug('deleteTask:', task);
     }
 

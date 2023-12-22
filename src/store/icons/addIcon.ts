@@ -73,10 +73,10 @@ function addIconToStore(icon: Icon): ResultOrError<Icon> {
         return handleDuplicateIconFileName(icon);
     }
 
-    const newState = updateStateWithNewIcon(state, icon);
+    const nextState = updateStateWithNewIcon(state, icon);
 
-    if (newState !== state) {
-        store.setState(newState);
+    if (nextState !== state) {
+        store.setState(nextState);
         logger.debug('addIcon:', icon);
     }
 
