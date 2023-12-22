@@ -59,7 +59,7 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('updateCategory:', category, store.getState());
+        logger.debug('updateCategory:', category);
     }
 
     return { result: category };

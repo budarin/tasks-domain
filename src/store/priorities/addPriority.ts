@@ -71,10 +71,10 @@ function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
     }
 
     const newState = updateStateWithNewPriority(state, priority);
-    
+
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('addPriority:', priority, store.getState());
+        logger.debug('addPriority:', priority);
     }
 
     return { result: priority };

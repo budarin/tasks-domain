@@ -55,7 +55,7 @@ function addTaskToStore(task: Task): ResultOrError<Task> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('addTask:', task, store.getState());
+        logger.debug('addTask:', task);
     }
 
     return { result: task };

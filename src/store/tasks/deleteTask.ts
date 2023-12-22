@@ -43,7 +43,7 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('deleteTask:', task, store.getState());
+        logger.debug('deleteTask:', task);
     }
 
     return { result: task };

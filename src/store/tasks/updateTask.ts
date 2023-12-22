@@ -51,7 +51,7 @@ function updateTasksStore(task: Task): ResultOrError<Task> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('updateTask:', task, store.getState());
+        logger.debug('updateTask:', task);
     }
 
     return { result: task };

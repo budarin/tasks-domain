@@ -51,7 +51,7 @@ function addCategoryToStore(category: Category): ResultOrError<Category> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('addCategory:', category, store.getState());
+        logger.debug('addCategory:', category);
     }
 
     return { result: category };

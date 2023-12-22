@@ -77,7 +77,7 @@ function addIconToStore(icon: Icon): ResultOrError<Icon> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('addIcon:', icon, store.getState());
+        logger.debug('addIcon:', icon);
     }
 
     return { result: icon };

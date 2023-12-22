@@ -63,7 +63,7 @@ function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
 
     if (newState !== state) {
         store.setState(newState);
-        logger.debug('deleteCategory:', category, store.getState());
+        logger.debug('deleteCategory:', category);
     }
 
     return { result: category };
