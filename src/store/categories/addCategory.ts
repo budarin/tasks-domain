@@ -48,9 +48,11 @@ function addCategoryToStore(category: Category): ResultOrError<Category> {
     }
 
     const newState = updateState(state, category);
-    store.setState(newState);
 
-    logger.debug('addCategory:', category, store.getState());
+    if (newState !== state) {
+        store.setState(newState);
+        logger.debug('addCategory:', category, store.getState());
+    }
 
     return { result: category };
 }
