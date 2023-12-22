@@ -30,9 +30,11 @@ export type IconKeys = keyof Icon;
 // };
 
 function getIcon(obj: LikeExtended<Icon>): Readonly<Icon> {
+    const { icon_id, file_name } = obj || {};
+
     return {
-        icon_id: obj.icon_id,
-        file_name: obj.file_name,
+        icon_id,
+        file_name,
     };
 }
 

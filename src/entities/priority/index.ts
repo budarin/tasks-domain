@@ -46,7 +46,7 @@ export const PRIORITIES = [PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_ABOVE_NORMAL,
 // };
 
 function getPriority(obj: LikeExtended<Priority>): Readonly<Priority> {
-    const { priority_id, priority_name, color } = obj;
+    const { priority_id, priority_name, color } = obj || {};
 
     return { priority_id, priority_name, color };
 }

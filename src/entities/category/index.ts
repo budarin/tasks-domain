@@ -33,9 +33,11 @@ export type Category = {
 // };
 
 export function getNewCategory(obj: LikeExtended<NewCategory>): DeepReadonly<NewCategory> {
+    const { icon_id, category_name } = obj || {};
+
     return {
-        icon_id: obj.icon_id,
-        category_name: obj.category_name,
+        icon_id,
+        category_name,
     };
 }
 
@@ -89,10 +91,11 @@ export const validateNewCategory: ValidateEntity<NewCategory> = (data) =>
 // };
 
 export function getCategory(obj: LikeExtended<Category>): DeepReadonly<Category> {
+    const { category_id, icon_id, category_name } = obj || {};
     return {
-        category_id: obj.category_id,
-        icon_id: obj.icon_id,
-        category_name: obj.category_name,
+        category_id,
+        icon_id,
+        category_name,
     };
 }
 

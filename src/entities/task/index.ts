@@ -83,7 +83,7 @@ export type Task = {
 // };
 
 export function getNewTask(obj: LikeExtended<NewTask>): Readonly<NewTask> {
-    const { title, priority_id, category_id, description, due_date_time, deleted, completed } = obj;
+    const { title, priority_id, category_id, description, due_date_time, deleted, completed } = obj || {};
 
     return {
         title,
@@ -214,7 +214,7 @@ export const validateNewTask: ValidateEntity<NewTask> = (data) =>
 // };
 
 export function getTask(obj: LikeExtended<Task>): Readonly<Task> {
-    const { task_id, title, priority_id, category_id, description, due_date_time, deleted, completed } = obj;
+    const { task_id, title, priority_id, category_id, description, due_date_time, deleted, completed } = obj || {};
 
     return {
         task_id,
