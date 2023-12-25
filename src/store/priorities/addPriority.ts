@@ -47,6 +47,10 @@ function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
         return handleError(priority, 'Добавление дубликата приоритета');
     }
 
+    if (hasDuplicatePriorityName(state, priority)) {
+        return handleError(priority, 'Добавление приоритета с уже существующим именем');
+    }
+
     const nextState = updateStateWithNewPriority(state, priority);
 
     if (nextState !== state) {

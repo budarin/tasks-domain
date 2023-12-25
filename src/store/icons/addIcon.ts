@@ -43,7 +43,7 @@ function addIconToStore(icon: Icon): ResultOrError<Icon> {
     const state = store.getState();
 
     if (hasDuplicateIconId(state, icon)) {
-        return handleError(icon, 'Добавление дубликата иконки');
+        return handleError(icon, 'Добавление дубликата идентификатора иконки');
     }
 
     if (hasDuplicateIconFileName(state, icon)) {

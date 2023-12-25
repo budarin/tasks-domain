@@ -12,14 +12,15 @@ export type Priority = {
 };
 
 export const PRIORITY_LOW = 'низкий';
-export type PiorityLow = typeof PRIORITY_LOW;
 export const PRIORITY_NORMAL = 'нормальный';
-export type PiorityNormal = typeof PRIORITY_NORMAL;
 export const PRIORITY_ABOVE_NORMAL = 'повышенный';
-export type PiorityAboveNormal = typeof PRIORITY_ABOVE_NORMAL;
 export const PRIORITY_HIGH = 'высокий';
-export type PiorityHigh = typeof PRIORITY_HIGH;
 export const PRIORITIES = [PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_ABOVE_NORMAL, PRIORITY_HIGH];
+
+export type PiorityLow = typeof PRIORITY_LOW;
+export type PiorityNormal = typeof PRIORITY_NORMAL;
+export type PiorityAboveNormal = typeof PRIORITY_ABOVE_NORMAL;
+export type PiorityHigh = typeof PRIORITY_HIGH;
 
 // const prioritySchema: JSONSchemaType<Priority> = {
 //     $id: 'https://budarin/MyTasks/taskPriority.json',
