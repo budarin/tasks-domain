@@ -4,14 +4,12 @@ import type { TasksStoreState } from '../index.ts';
 import type { Category } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { validateCategory } from '../../entities/index.js';
 import { hasInvalidCategoryIcon } from './helpers/hasInvalidIcon.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
-import { handleInvalidCategoryIcon } from './helpers/handleInvalidIcon.js';
-import { hasDuplicateCategoryName } from './helpers/hasDuplicateCategoryName.js';
-import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryName.js';
-import { handleDuplicateCategoryId } from './helpers/handleDuplicateCategoryId.js';
 import { hasDuplicateCategoryId } from './helpers/hasDuplicateCategoryId.js';
+import { hasDuplicateCategoryName } from './helpers/hasDuplicateCategoryName.js';
 
 function updateState(state: TasksStoreState, category: Category): TasksStoreState {
     const { category_id } = category;
@@ -36,15 +34,15 @@ function addCategoryToStore(category: Category): ResultOrError<Category> {
     const state = store.getState();
 
     if (hasDuplicateCategoryId(state, category)) {
-        return handleDuplicateCategoryId(category);
+        return handleError(category, 'Добавление дубликата категории');
     }
 
     if (hasDuplicateCategoryName(state, category)) {
-        return handleDuplicateCategoryName(category);
+        return handleError(category, 'Добавление категории с уже существующим именем категории');
     }
 
     if (hasInvalidCategoryIcon(state, category)) {
-        return handleInvalidCategoryIcon(category);
+        return handleError(category, 'Добавление категории с не существующей иконкой');
     }
 
     const nextState = updateState(state, category);

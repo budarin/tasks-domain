@@ -4,9 +4,9 @@ import type { TasksStoreState } from '../index.ts';
 import type { Task } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { validateTask } from '../../entities/index.js';
 import { isTaskNotFound } from './helpers/isTaskNotFound.js';
-import { handleTaskNotFound } from './helpers/handleTaskNotFound.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
 export const errorMsg = 'Задача не найдена';
@@ -36,7 +36,7 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
 
     // есть ли задача в хранилище?
     if (isTaskNotFound(state, task)) {
-        return handleTaskNotFound(task);
+        return handleError(task, 'Задача не найдена');
     }
 
     const nextState = updateState(state, task);

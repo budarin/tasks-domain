@@ -5,14 +5,12 @@ import type { Task } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { isPriorityAbsent } from './helpers/isPriorityAbsent.js';
 import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
 import { createExtendedTask } from './helpers/createExtendedTask.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 import { hasDuplicateTaskId } from './helpers/hasDuplicateTaskId.js';
-import { handleDuplicateTaskId } from './helpers/handleDuplicateTaskId.js';
-import { handlePriorityAbsence } from './helpers/handlePriorityAbsence.js';
-import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
 
 function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     const { tasks } = state;
@@ -40,15 +38,15 @@ function addTaskToStore(task: Task): ResultOrError<Task> {
     const state = store.getState();
 
     if (hasDuplicateTaskId(state, task)) {
-        return handleDuplicateTaskId(task);
+        return handleError(task, 'Добавление дубликата задачи');
     }
 
     if (isPriorityAbsent(state, task)) {
-        return handlePriorityAbsence(task);
+        return handleError(task, 'Добавление задачи с не существующим приоритетом');
     }
 
     if (isCategoryAbsent(state, task)) {
-        return handleCategoryAbsence(task);
+        return handleError(task, 'Добавление задачи с не существующей категорией');
     }
 
     const nextState = updateState(state, task);

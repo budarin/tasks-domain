@@ -5,23 +5,11 @@ import type { Icon } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateIcon } from '../../entities/index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
 function hasDuplicateIconId(state: TasksStoreState, icon: Icon): boolean {
     return Boolean(state.icons.ids.indexOf(icon.icon_id) > -1);
-}
-
-const ERROR_MSG = 'Добавление дубликата иконки';
-
-function handleDuplicateIconId(icon: Icon): ResultOrError<Icon> {
-    logger.error(ERROR_MSG, icon);
-
-    return {
-        error: {
-            message: ERROR_MSG,
-            data: icon,
-        },
-    };
 }
 
 export function hasDuplicateIconFileName(state: TasksStoreState, icon: Icon): boolean {
@@ -31,17 +19,6 @@ export function hasDuplicateIconFileName(state: TasksStoreState, icon: Icon): bo
         }
     }
     return false;
-}
-
-export function handleDuplicateIconFileName(icon: Icon): ResultOrError<Icon> {
-    logger.error(ERROR_MSG, icon);
-
-    return {
-        error: {
-            message: ERROR_MSG,
-            data: icon,
-        },
-    };
 }
 
 function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): TasksStoreState {
@@ -66,11 +43,11 @@ function addIconToStore(icon: Icon): ResultOrError<Icon> {
     const state = store.getState();
 
     if (hasDuplicateIconId(state, icon)) {
-        return handleDuplicateIconId(icon);
+        return handleError(icon, 'Добавление дубликата иконки');
     }
 
     if (hasDuplicateIconFileName(state, icon)) {
-        return handleDuplicateIconFileName(icon);
+        return handleError(icon, 'Добавление иконки с уже существующим именем файла иконки');
     }
 
     const nextState = updateStateWithNewIcon(state, icon);

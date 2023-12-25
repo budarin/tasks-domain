@@ -5,14 +5,12 @@ import type { TasksStoreState } from '../index.ts';
 import type { Category } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { validateCategory } from '../../entities/index.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 import { hasInvalidCategoryIcon } from './helpers/hasInvalidIcon.js';
 import { isCategoryIdNotFound } from './helpers/isCategoryIdNotFound.js';
-import { handleInvalidCategoryIcon } from './helpers/handleInvalidIcon.js';
-import { handleCategoryNotFound } from './helpers/handleCategoryNotFound.js';
 import { hasDuplicateCategoryName } from './helpers/hasDuplicateCategoryName.js';
-import { handleDuplicateCategoryName } from './helpers/handleDuplicateCategoryName.js';
 
 // Constarints:
 // - category_id должен существовать
@@ -44,15 +42,15 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
     }
 
     if (isCategoryIdNotFound(state, category)) {
-        return handleCategoryNotFound(category);
+        return handleError(category, 'Категория не найдена');
     }
 
     if (hasInvalidCategoryIcon(state, category)) {
-        return handleInvalidCategoryIcon(category);
+        return handleError(category, 'Модификация категории с не существующей иконкой');
     }
 
     if (hasDuplicateCategoryName(state, category)) {
-        return handleDuplicateCategoryName(category);
+        return handleError(category, 'Попытка изменить имя категории на имя уже существующей категории');
     }
 
     const nextState = updateState(state, category);

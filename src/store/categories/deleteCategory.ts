@@ -4,10 +4,10 @@ import type { TasksStoreState } from '../index.js';
 import type { Category } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { validateCategory } from '../../entities/index.js';
 import { isCategoryNotFound } from './helpers/isCategoryNotFound.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
-import { handleCategoryNotFound } from './helpers/handleCategoryNotFound.js';
 
 // Constarints:
 // - нельзя удалить категорию если ее Id отсутствует в хранилище
@@ -16,19 +16,6 @@ import { handleCategoryNotFound } from './helpers/handleCategoryNotFound.js';
 
 function isCategoryUsed(state: TasksStoreState, category: Category): boolean {
     return Boolean(Object.values(state.tasks.byId).find((task) => task.category_id === category.category_id));
-}
-
-const ERROR_MSG = 'Удаление категории, которая используется';
-
-function handleUsedCategory(category: Category): ResultOrError<Category> {
-    logger.error(ERROR_MSG, category);
-
-    return {
-        error: {
-            message: ERROR_MSG,
-            data: category,
-        },
-    };
 }
 
 function updateState(state: TasksStoreState, category: Category): TasksStoreState {
@@ -52,11 +39,11 @@ function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
     const state = store.getState();
 
     if (isCategoryNotFound(state, category)) {
-        return handleCategoryNotFound(category);
+        return handleError(category, 'Категория не найдена');
     }
 
     if (isCategoryUsed(state, category)) {
-        return handleUsedCategory(category);
+        return handleError(category, 'Удаление категории, которая используется');
     }
 
     const nextState = updateState(state, category);

@@ -4,24 +4,12 @@ import type { TasksStoreState } from '../index.ts';
 import type { Priority } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { validatePriority } from '../../entities/index.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 
 function hasDuplicatePriorityId(state: TasksStoreState, priority: Priority): boolean {
     return Boolean(state.priorities.ids.indexOf(priority.priority_id) > -1);
-}
-
-const ERROR_MSG = 'Добавление дубликата приоритета';
-
-function handleDuplicatePriorityId(priority: Priority): ResultOrError<Priority> {
-    logger.error(ERROR_MSG, priority);
-
-    return {
-        error: {
-            message: ERROR_MSG,
-            data: priority,
-        },
-    };
 }
 
 export function hasDuplicatePriorityName(state: TasksStoreState, priority: Priority): boolean {
@@ -31,17 +19,6 @@ export function hasDuplicatePriorityName(state: TasksStoreState, priority: Prior
         }
     }
     return false;
-}
-
-export function handleDuplicatePriorityName(priority: Priority): ResultOrError<Priority> {
-    logger.error(ERROR_MSG, priority);
-
-    return {
-        error: {
-            message: ERROR_MSG,
-            data: priority,
-        },
-    };
 }
 
 function updateStateWithNewPriority(state: TasksStoreState, priority: Priority): TasksStoreState {
@@ -67,7 +44,7 @@ function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
     const state = store.getState();
 
     if (hasDuplicatePriorityId(state, priority)) {
-        return handleDuplicatePriorityId(priority);
+        return handleError(priority, 'Добавление дубликата приоритета');
     }
 
     const nextState = updateStateWithNewPriority(state, priority);

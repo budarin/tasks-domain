@@ -5,14 +5,12 @@ import type { Task } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
 import { validateTask } from '../../entities/index.js';
-import { handleTaskNotFound } from './helpers/handleTaskNotFound.js';
+import { handleError } from '../_helpers/handleError.js';
 import { isPriorityAbsent } from './helpers/isPriorityAbsent.js';
 import { isTaskIdNotFound } from './helpers/isTaskIdNotFound.js';
 import { isCategoryAbsent } from './helpers/isCategoryAbsent.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 import { createExtendedTask } from './helpers/createExtendedTask.js';
-import { handlePriorityAbsence } from './helpers/handlePriorityAbsence.js';
-import { handleCategoryAbsence } from './helpers/handleCategoryAbsence.js';
 
 function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     const { tasks } = state;
@@ -36,15 +34,15 @@ function updateTasksStore(task: Task): ResultOrError<Task> {
     const state = store.getState();
 
     if (isTaskIdNotFound(state, task)) {
-        return handleTaskNotFound(task);
+        return handleError(task, 'Задача не найдена');
     }
 
     if (isPriorityAbsent(state, task)) {
-        return handlePriorityAbsence(task);
+        return handleError(task, 'Обновление задачи с не существующим приоритетом');
     }
 
     if (isCategoryAbsent(state, task)) {
-        return handleCategoryAbsence(task);
+        return handleError(task, 'Обновление задачи с не существующей категорией');
     }
 
     const nextState = updateState(state, task);
