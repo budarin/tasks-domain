@@ -22,4 +22,7 @@ export * from './store/tasks/addTask.js';
 export * from './store/tasks/deleteTask.js';
 export * from './store/tasks/updateTask.js';
 
+// Selectors
+export * from './store/selectors/getTaskInTrash.js';
+
 export * from '@budarin/validate.ts';
