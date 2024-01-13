@@ -1,6 +1,7 @@
-import type { FieldsValidators, LikeExtended, ValidateEntity } from '@budarin/validate.ts';
-import { isInteger, isStringWithLength, mustBeInt, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 import type { Id } from '../types.ts';
+import type { FieldsValidators, LikeExtended, ValidateEntity } from '@budarin/validate.ts';
+
+import { isInteger, isStringWithLength, mustBeInt, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 
 export type IconId = Id;
 export type IconName = string;

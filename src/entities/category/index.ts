@@ -1,6 +1,7 @@
-import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
-import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 import type { Id } from '../types.ts';
+import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
+
+import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 
 export type CategoryId = Id;
 export type CategoryIconId = Id;

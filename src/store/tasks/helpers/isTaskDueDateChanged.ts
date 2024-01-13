@@ -1,5 +1,5 @@
 import type { ExtendedTask } from '../../index.ts';
 
-export function isTaskDueDateChanged(task: ExtendedTask, prevTask: ExtendedTask): boolean {
-    return prevTask.due_date_time !== task.due_date_time;
+export function isTaskExpireDateChanged(task: ExtendedTask, prevTask: ExtendedTask): boolean {
+    return prevTask.expire_date_time !== task.expire_date_time;
 }

@@ -1,3 +1,4 @@
+import type { Id } from '../types.ts';
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 
 import {
@@ -12,14 +13,13 @@ import {
     stringHasWrongLength,
     validateEntity,
 } from '@budarin/validate.ts';
-import type { Id } from '../types.ts';
 
 export type TaskId = Id;
 export type TaskTitle = string;
 export type TaskPriorityId = Id;
 export type TaskCategoryId = Id | undefined;
 export type TaskDescription = string | undefined;
-export type TaskDueDateTime = string | undefined;
+export type TaskExpireDateTime = string | undefined;
 export type TaskDeleted = boolean | undefined;
 export type TaskCompleted = boolean | undefined;
 
@@ -28,7 +28,7 @@ export type NewTask = {
     priority_id: TaskPriorityId;
     category_id?: TaskCategoryId;
     description?: TaskDescription;
-    due_date_time?: TaskDueDateTime;
+    expire_date_time?: TaskExpireDateTime;
     deleted?: TaskDeleted;
     completed?: TaskCompleted;
 };
@@ -60,7 +60,7 @@ export type Task = {
 //             nullable: true,
 //         },
 //
-//         due_date_time: {
+//         expire_date_time: {
 //             type: 'string',
 //             format: 'iso-date-date',
 //             nullable: true,
@@ -83,14 +83,14 @@ export type Task = {
 // };
 
 export function getNewTask(obj: LikeExtended<NewTask>): Readonly<NewTask> {
-    const { title, priority_id, category_id, description, due_date_time, deleted, completed } = obj || {};
+    const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
         title,
         priority_id,
         category_id,
         description,
-        due_date_time,
+        expire_date_time,
         deleted,
         completed,
     };
@@ -101,7 +101,7 @@ export const createNewTask = (
     priorityId: TaskPriorityId,
     categoryId?: TaskCategoryId,
     description?: TaskDescription,
-    dueDateTime?: TaskDueDateTime,
+    expireDateTime?: TaskExpireDateTime,
     deleted: TaskDeleted = false,
     completed: TaskCompleted = false,
 ): Readonly<NewTask> => ({
@@ -109,7 +109,7 @@ export const createNewTask = (
     priority_id: priorityId,
     category_id: categoryId,
     description,
-    due_date_time: dueDateTime,
+    expire_date_time: expireDateTime,
     deleted,
     completed,
 });
@@ -145,11 +145,11 @@ export const newTaskFields: FieldsValidators = {
             ],
         ],
     },
-    due_date_time: {
+    expire_date_time: {
         validators: [
             [
                 isUndefinedOr(isISODateTimeString),
-                `Свойство сущности ${entityName} "due_date_time" должно быть датой в формате ISO`,
+                `Свойство сущности ${entityName} "expire_date_time" должно быть датой в формате ISO`,
             ],
         ],
     },
@@ -191,7 +191,7 @@ export const validateNewTask: ValidateEntity<NewTask> = (data) =>
 //             nullable: true,
 //         },
 //
-//         due_date_time: {
+//         expire_date_time: {
 //             type: 'string',
 //             format: 'iso-date-date',
 //             nullable: true,
@@ -214,7 +214,7 @@ export const validateNewTask: ValidateEntity<NewTask> = (data) =>
 // };
 
 export function getTask(obj: LikeExtended<Task>): Readonly<Task> {
-    const { task_id, title, priority_id, category_id, description, due_date_time, deleted, completed } = obj || {};
+    const { task_id, title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
         task_id,
@@ -222,7 +222,7 @@ export function getTask(obj: LikeExtended<Task>): Readonly<Task> {
         priority_id,
         category_id,
         description,
-        due_date_time,
+        expire_date_time,
         deleted,
         completed,
     };
@@ -234,7 +234,7 @@ export const createTask = (
     priorityId: TaskPriorityId,
     categoryId?: TaskCategoryId,
     description?: TaskDescription,
-    dueDateTime?: TaskDueDateTime,
+    expireDateTime?: TaskExpireDateTime,
     deleted: TaskDeleted = false,
     completed: TaskCompleted = false,
 ): Readonly<Task> => ({
@@ -243,7 +243,7 @@ export const createTask = (
     priority_id: priorityId,
     category_id: categoryId,
     description,
-    due_date_time: dueDateTime,
+    expire_date_time: expireDateTime,
     deleted,
     completed,
 });

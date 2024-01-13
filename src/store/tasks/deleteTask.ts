@@ -4,8 +4,8 @@ import type { TasksStoreState } from '../index.ts';
 import type { Task } from '../../entities/index.ts';
 
 import { logger, store } from '../index.js';
-import { handleError } from '../_helpers/handleError.js';
 import { validateTask } from '../../entities/index.js';
+import { handleError } from '../_helpers/handleError.js';
 import { isTaskNotFound } from './helpers/isTaskNotFound.js';
 import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 

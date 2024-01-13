@@ -1,4 +1,5 @@
 import { Like, ResultOrError, ValidateEntity } from '@budarin/validate.ts';
+
 import { logger } from '../index.js';
 
 export interface StoreMethod<T> {

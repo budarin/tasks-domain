@@ -24,7 +24,7 @@ Table tasks {
   priority_id integer
   category_id integer
   description varchar
-  due_date_time timestamp
+  expire_date_time timestamp
   deleted boolean
   completed boolean
 }
