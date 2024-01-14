@@ -23,4 +23,3 @@ export * from './store/tasks/deleteTask.js';
 export * from './store/tasks/updateTask.js';
 
 // Selectors
-export * from './store/selectors/getDeletedTasks.js';
