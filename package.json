@@ -34,7 +34,7 @@
     "dependencies": {
         "@budarin/deep-equal": "^1.0.0",
         "@budarin/service-stub": "^1.0.2",
-        "@budarin/validate.ts": "^1.0.15"
+        "@budarin/validate.ts": "^1.0.19"
     },
     "devDependencies": {
         "typescript": "^5.3.2",
