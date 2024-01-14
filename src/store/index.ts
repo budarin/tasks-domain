@@ -1,8 +1,8 @@
+import { createServiceStub } from '@budarin/service-stub';
+
 import type { StoreApi, UseBoundStore } from 'zustand';
 import type { Id, Timestamp } from '../entities/types.ts';
 import type { Category, Icon, Priority, Task } from '../entities/index.ts';
-
-import { createServiceStub } from '@budarin/service-stub';
 
 export const tasksStoreState = {
     icons: {
@@ -48,14 +48,14 @@ export type CategoryState = {
 export type ExtendedTask = Task &
     (
         | {
-              due_date_time: string;
-              due_date_ts: Timestamp;
-              due_date_time_ts: Timestamp;
+              expire_date_time: string;
+              expire_date_ts: Timestamp;
+              expire_date_time_ts: Timestamp;
           }
         | {
-              due_date_time?: never;
-              due_date_ts?: never;
-              due_date_time_ts?: never;
+              expire_date_time?: never;
+              expire_date_ts?: never;
+              expire_date_time_ts?: never;
           }
     );
 

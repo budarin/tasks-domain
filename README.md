@@ -40,7 +40,7 @@ useAppStore = create<AppState>()({
     tasks: {
         ...tasksStoreState.tasks,
 
-        idsByDueDate: {},
+        idsByExpireDate: {},
         idsByCategoryId: {},
         idsByFilterId: {
             [INBOX_KEY]: [],

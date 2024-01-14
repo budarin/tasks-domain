@@ -1,5 +1,5 @@
 import type { ExtendedTask } from '../../index.ts';
 
-export function isTaskDueDateDeleted(task: ExtendedTask, prevTask: ExtendedTask): boolean {
-    return prevTask.due_date_time !== undefined && task.due_date_time === undefined;
+export function isTaskExpireDateDeleted(task: ExtendedTask, prevTask: ExtendedTask): boolean {
+    return prevTask.expire_date_time !== undefined && task.expire_date_time === undefined;
 }
