@@ -7,7 +7,8 @@ export function createExtendedTask(task: Task): ExtendedTask {
     if (expire_date_time) {
         const timestamp = Date.parse(expire_date_time);
         const date = new Date(timestamp);
-        const date_timestamp = new Date(date.getFullYear(), date.getMonth(), date.getDay()).valueOf();
+        date.setHours(0, 0, 0, 0);
+        const date_timestamp = date.getTime();
 
         return {
             ...task,
