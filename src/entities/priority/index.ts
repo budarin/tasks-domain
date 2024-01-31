@@ -1,15 +1,13 @@
 import type { Id } from '../types.ts';
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 
-import { hexColorvalidator, isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
+import { isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
 
 export type PriorityId = Id;
 export type PriorityTitle = PiorityLow | PiorityNormal | PiorityAboveNormal | PiorityHigh;
-export type PriorityColor = string;
 export type Priority = {
     priority_id: PriorityId;
     priority_name: PriorityTitle;
-    color: PriorityColor;
 };
 
 export const PRIORITY_LOW = 'низкий';
@@ -37,20 +35,15 @@ export type PiorityHigh = typeof PRIORITY_HIGH;
 //             type: 'string',
 //             enum: [],
 //         },
-//
-//         color: {
-//             type: 'string',
-//             format: 'hex-color',
-//         },
 //     },
 //
-//     required: ['priority_id', 'priority_name', 'color'],
+//     required: ['priority_id', 'priority_name'],
 // };
 
 function getPriority(obj: LikeExtended<Priority>): Readonly<Priority> {
-    const { priority_id, priority_name, color } = obj || {};
+    const { priority_id, priority_name } = obj || {};
 
-    return { priority_id, priority_name, color };
+    return { priority_id, priority_name };
 }
 
 const entityName = 'Приоритет';
@@ -66,10 +59,6 @@ const priorityFields: FieldsValidators = {
                 `Свойство сущности ${entityName} "priority_name" должно быть одним из ${JSON.stringify(PRIORITIES)}`,
             ],
         ],
-        required: true,
-    },
-    color: {
-        validators: [hexColorvalidator(entityName)],
         required: true,
     },
 };

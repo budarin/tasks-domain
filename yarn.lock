@@ -7,22 +7,22 @@
   resolved "https://registry.yarnpkg.com/@budarin/deep-equal/-/deep-equal-1.0.0.tgz#6b44940fac656b98abd713f880acfb01b8f5a913"
   integrity sha512-8uZe4NmOETs107+m5WtTPmOBPpt97q+uNfLTWKsRYaP3lKvOfMJz7Q4JyyOFGkW8hLtsRYIBiJeGyT6HTfMEcQ==
 
-"@budarin/json-rpc-interface@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@budarin/json-rpc-interface/-/json-rpc-interface-1.0.3.tgz#6368c7ece9ed5bfb16bf57d462f6a47a2b9dfd8e"
-  integrity sha512-hC6q4XtsKr4slZhqZQLSCOdGUqnWuwuHW6l/U5O4O+tfQBc4rnogXzcqcuUARu0xV0/95cZVRkWqsOsHEpTOOg==
+"@budarin/json-rpc-interface@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@budarin/json-rpc-interface/-/json-rpc-interface-1.0.4.tgz#0c90a47458c43e6c8b32a4702bf0b405562a19b1"
+  integrity sha512-WJFCdG0ATr3rfsMDay8P9CBBtVyZSm1dXOMlrbQdKdVY/T/DMqsjR+13BBi52VxSExuS0CsjXdkQIZsxC+hbWw==
 
 "@budarin/service-stub@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@budarin/service-stub/-/service-stub-1.0.2.tgz#e6637bf5de2b335a0e0610e033a2a7692f684cde"
   integrity sha512-hgcbSRsKuoL8tchVWKru/bEm2ZO5su1Vgo4kmWj/eUKM1rJpZAzdlv1MN01XjZJS3NVwR8+ctMBeEFDWLAkUZw==
 
-"@budarin/validate.ts@^1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@budarin/validate.ts/-/validate.ts-1.0.19.tgz#0e43b0086da68fbe01310dc53b18701c56bfe6fa"
-  integrity sha512-P8DwfjaQZTce2pL3eQwwOkuqXqIJPzBYozCWaNG3Jz9N7Yyww4eAcAy8lz3Lf6TPKOPESu1fOjdAWqgD4ezeyA==
+"@budarin/validate.ts@^1.0.20":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@budarin/validate.ts/-/validate.ts-1.0.20.tgz#47f3817634a16cfb16f00aadba97020e93a244d2"
+  integrity sha512-p4CcKBSGTemBY5JpnTVz1oIjkYgNmXwPBGNRlpZkkCxTfyuIPXY3wrkOZZYj0iLfGY5h0XuZzQc1q6FxLH932g==
   dependencies:
-    "@budarin/json-rpc-interface" "^1.0.2"
+    "@budarin/json-rpc-interface" "^1.0.4"
 
 typescript@^5.3.2:
   version "5.3.3"

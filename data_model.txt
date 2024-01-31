@@ -15,7 +15,6 @@ Ref: categories.icon_id < icons.icon_id
 Table priorities {
   priority_id integer [primary key]
   priority_name varchar
-  color varchar
 }
 
 Table tasks {
