@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@budarin/deep-equal@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@budarin/deep-equal/-/deep-equal-1.0.0.tgz#6b44940fac656b98abd713f880acfb01b8f5a913"
-  integrity sha512-8uZe4NmOETs107+m5WtTPmOBPpt97q+uNfLTWKsRYaP3lKvOfMJz7Q4JyyOFGkW8hLtsRYIBiJeGyT6HTfMEcQ==
-
 "@budarin/json-rpc-interface@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@budarin/json-rpc-interface/-/json-rpc-interface-1.0.4.tgz#0c90a47458c43e6c8b32a4702bf0b405562a19b1"

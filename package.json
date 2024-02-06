@@ -32,7 +32,6 @@
         "upgrade deps": "yarn upgrade-interactive --latest;"
     },
     "dependencies": {
-        "@budarin/deep-equal": "^1.0.0",
         "@budarin/service-stub": "^1.0.2",
         "@budarin/validate.ts": "^1.0.20"
     },

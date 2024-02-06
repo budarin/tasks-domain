@@ -1,8 +1,8 @@
-import { deepEqual } from '@budarin/deep-equal';
-import type { ResultOrError } from '@budarin/validate.ts';
+import { shallow } from 'zustand/shallow';
 
 import type { TasksStoreState } from '../index.ts';
 import type { Category } from '../../entities/index.ts';
+import type { ResultOrError } from '@budarin/validate.ts';
 
 import { logger, store } from '../index.js';
 import { handleError } from '../_helpers/handleError.js';
@@ -37,7 +37,7 @@ function updateState(state: TasksStoreState, category: Category): TasksStoreStat
 function updateCategoryInStore(category: Category): ResultOrError<Category> {
     const state = store.getState();
 
-    if (deepEqual(category, state.categories.byId[category.category_id])) {
+    if (shallow(category, state.categories.byId[category.category_id])) {
         return { result: category };
     }
 
