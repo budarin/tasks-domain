@@ -42,7 +42,7 @@ export function getNewCategory(obj: LikeExtended<NewCategory>): DeepReadonly<New
     };
 }
 
-export const createNewCategory = (iconId: CategoryId, categoryName: CategoryName): Readonly<NewCategory> => ({
+export const createNewCategory = (iconId: CategoryId, categoryName: CategoryName): DeepReadonly<NewCategory> => ({
     icon_id: iconId,
     category_name: categoryName,
 });
@@ -104,7 +104,7 @@ export const createCategory = (
     categoryId: CategoryId,
     iconId: CategoryIconId,
     category: CategoryName,
-): Readonly<Category> => ({
+): DeepReadonly<Category> => ({
     category_id: categoryId,
     icon_id: iconId,
     category_name: category,

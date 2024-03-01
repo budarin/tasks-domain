@@ -1,5 +1,5 @@
 import type { Id } from '../types.ts';
-import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
+import type { LikeExtended, FieldsValidators, ValidateEntity, DeepReadonly } from '@budarin/validate.ts';
 
 import {
     isBoolean,
@@ -82,7 +82,7 @@ export type Task = {
 //     required: ['title', 'priority_id'],
 // };
 
-export function getNewTask(obj: LikeExtended<NewTask>): Readonly<NewTask> {
+export function getNewTask(obj: LikeExtended<NewTask>): DeepReadonly<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
@@ -104,7 +104,7 @@ export const createNewTask = (
     expireDateTime?: TaskExpireDateTime,
     deleted: TaskDeleted = false,
     completed: TaskCompleted = false,
-): Readonly<NewTask> => ({
+): DeepReadonly<NewTask> => ({
     title,
     priority_id: priorityId,
     category_id: categoryId,
@@ -213,7 +213,7 @@ export const validateNewTask: ValidateEntity<NewTask> = (data) =>
 //     required: ['task_id', 'title', 'priority_id'],
 // };
 
-export function getTask(obj: LikeExtended<Task>): Readonly<Task> {
+export function getTask(obj: LikeExtended<Task>): DeepReadonly<Task> {
     const { task_id, title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
@@ -237,7 +237,7 @@ export const createTask = (
     expireDateTime?: TaskExpireDateTime,
     deleted: TaskDeleted = false,
     completed: TaskCompleted = false,
-): Readonly<Task> => ({
+): DeepReadonly<Task> => ({
     task_id: taskId,
     title,
     priority_id: priorityId,

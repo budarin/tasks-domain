@@ -1,5 +1,5 @@
 import type { Id } from '../types.ts';
-import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
+import type { LikeExtended, FieldsValidators, ValidateEntity, DeepReadonly } from '@budarin/validate.ts';
 
 import { isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
 
@@ -40,7 +40,7 @@ export type PiorityHigh = typeof PRIORITY_HIGH;
 //     required: ['priority_id', 'priority_name'],
 // };
 
-function getPriority(obj: LikeExtended<Priority>): Readonly<Priority> {
+function getPriority(obj: LikeExtended<Priority>): DeepReadonly<Priority> {
     const { priority_id, priority_name } = obj || {};
 
     return { priority_id, priority_name };
