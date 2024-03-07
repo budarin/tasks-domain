@@ -32,11 +32,11 @@
         "upgrade deps": "yarn upgrade-interactive --latest;"
     },
     "dependencies": {
-        "@budarin/service-stub": "^1.0.3",
-        "@budarin/validate.ts": "^1.0.21"
+        "@budarin/service-stub": "^1.0.4",
+        "@budarin/validate.ts": "^1.0.22"
     },
     "devDependencies": {
-        "typescript": "^5.3.2",
+        "typescript": "^5.4.2",
         "zustand": "^4.5.2"
     },
     "peerDependencies": {
