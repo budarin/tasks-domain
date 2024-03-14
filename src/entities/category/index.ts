@@ -16,6 +16,29 @@ export type Category = {
     category_id: CategoryId;
 } & NewCategory;
 
+const entityName = 'Категория';
+const category_name_min_length = 3;
+const category_name_Max_Length = 20;
+
+export const categoryFormFieldsProps = {
+    category_id: {
+        type: 'number',
+        min: 1,
+        required: true,
+    },
+    icon_id: {
+        type: 'number',
+        min: 1,
+        required: true,
+    },
+    category_name: {
+        type: 'string',
+        minLength: category_name_min_length,
+        maxLength: category_name_Max_Length,
+        required: true,
+    },
+};
+
 // const newCategorySchema = {
 //     $id: 'https://budarin/MyTasks/newTaskCategory.json',
 //     type: 'object',
@@ -46,10 +69,6 @@ export const createNewCategory = (iconId: CategoryId, categoryName: CategoryName
     icon_id: iconId,
     category_name: categoryName,
 });
-
-const entityName = 'Категория';
-const category_name_min_length = 3;
-const category_name_Max_Length = 20;
 
 const newCategoryFields: FieldsValidators = {
     icon_id: {

@@ -37,6 +37,40 @@ export type Task = {
     task_id: TaskId;
 } & NewTask;
 
+const entityName = 'Задача';
+const title_min_length = 3;
+const title_max_length = 100;
+const description_min_length = 3;
+const description_max_length = 1000;
+
+export const taskFormFieldsProps = {
+    task_id: {
+        type: 'number',
+        min: 1,
+        required: true,
+    },
+    title: {
+        type: 'text',
+        minLength: title_min_length,
+        maxLength: title_max_length,
+        required: true,
+    },
+    priority_id: {
+        type: 'number',
+        min: 1,
+        required: true,
+    },
+    category_id: {
+        type: 'number',
+        min: 1,
+    },
+    description: {
+        type: 'text',
+        minLength: description_min_length,
+        maxLength: description_max_length,
+    },
+};
+
 // export const newTaskSchema: JSONSchemaType<NewTask> = {
 //     $id: 'https://budarin/MyTasks/newTask.json',
 //     type: 'object',
@@ -113,12 +147,6 @@ export const createNewTask = (
     deleted,
     completed,
 });
-
-const entityName = 'Задача';
-const title_min_length = 3;
-const title_max_length = 100;
-const description_min_length = 3;
-const description_max_length = 1000;
 
 export const newTaskFields: FieldsValidators = {
     title: {
