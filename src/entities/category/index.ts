@@ -33,9 +33,10 @@ export const categoryFormFieldsProps = {
     },
     category_name: {
         type: 'text',
+        required: true,
         minLength: category_name_min_length,
         maxLength: category_name_Max_Length,
-        required: true,
+        placeholder: 'Название новой категории',
     },
 };
 
