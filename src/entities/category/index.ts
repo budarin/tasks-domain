@@ -32,7 +32,7 @@ export const categoryFormFieldsProps = {
         required: true,
     },
     category_name: {
-        type: 'string',
+        type: 'text',
         minLength: category_name_min_length,
         maxLength: category_name_Max_Length,
         required: true,
