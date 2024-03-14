@@ -37,7 +37,7 @@ export function getNewCategory(obj: LikeExtended<NewCategory>): DeepReadonly<New
     const { icon_id, category_name } = obj || {};
 
     return {
-        icon_id,
+        icon_id: Number(icon_id),
         category_name,
     };
 }
@@ -94,8 +94,8 @@ export const validateNewCategory: ValidateEntity<NewCategory> = (data) =>
 export function getCategory(obj: LikeExtended<Category>): DeepReadonly<Category> {
     const { category_id, icon_id, category_name } = obj || {};
     return {
-        category_id,
-        icon_id,
+        category_id: Number(category_id),
+        icon_id: Number(icon_id),
         category_name,
     };
 }

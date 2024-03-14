@@ -87,8 +87,8 @@ export function getNewTask(obj: LikeExtended<NewTask>): DeepReadonly<NewTask> {
 
     return {
         title,
-        priority_id,
-        category_id,
+        priority_id: Number(priority_id),
+        category_id: category_id ? Number(category_id) : undefined,
         description,
         expire_date_time,
         deleted,
@@ -217,10 +217,10 @@ export function getTask(obj: LikeExtended<Task>): DeepReadonly<Task> {
     const { task_id, title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
-        task_id,
+        task_id: Number(task_id),
         title,
-        priority_id,
-        category_id,
+        priority_id: Number(priority_id),
+        category_id: category_id ? Number(category_id) : undefined,
         description,
         expire_date_time,
         deleted,

@@ -34,7 +34,7 @@ function getIcon(obj: LikeExtended<Icon>): DeepReadonly<Icon> {
     const { icon_id, file_name } = obj || {};
 
     return {
-        icon_id,
+        icon_id: Number(icon_id),
         file_name,
     };
 }

@@ -43,7 +43,7 @@ export type PiorityHigh = typeof PRIORITY_HIGH;
 function getPriority(obj: LikeExtended<Priority>): DeepReadonly<Priority> {
     const { priority_id, priority_name } = obj || {};
 
-    return { priority_id, priority_name };
+    return { priority_id: Number(priority_id), priority_name };
 }
 
 const entityName = 'Приоритет';
