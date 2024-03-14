@@ -39,6 +39,8 @@ export const categoryFormFieldsProps = {
     },
 };
 
+export type CategoryFormFieldsProps = typeof categoryFormFieldsProps;
+
 // const newCategorySchema = {
 //     $id: 'https://budarin/MyTasks/newTaskCategory.json',
 //     type: 'object',

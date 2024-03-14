@@ -71,6 +71,8 @@ export const taskFormFieldsProps = {
     },
 };
 
+export type TaskFormFieldsProps = typeof taskFormFieldsProps;
+
 // export const newTaskSchema: JSONSchemaType<NewTask> = {
 //     $id: 'https://budarin/MyTasks/newTask.json',
 //     type: 'object',
