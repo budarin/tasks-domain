@@ -23,16 +23,19 @@ const category_name_Max_Length = 20;
 
 export const categoryFormFieldsProps = {
     category_id: {
+        name: 'category_id',
         type: 'number',
         min: 1,
         required: true,
     },
     icon_id: {
+        name: 'icon_id',
         type: 'number',
         min: 1,
         required: true,
     },
     category_name: {
+        name: 'category_name',
         type: 'text',
         required: true,
         minLength: category_name_min_length,
