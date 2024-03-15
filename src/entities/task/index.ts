@@ -1,5 +1,12 @@
 import type { Id } from '../types.ts';
-import type { LikeExtended, FieldsValidators, ValidateEntity, DeepReadonly } from '@budarin/validate.ts';
+import type {
+    LikeExtended,
+    FieldsValidators,
+    ValidateEntity,
+    DeepReadonly,
+    Like,
+    LikeType,
+} from '@budarin/validate.ts';
 
 import {
     isBoolean,
@@ -125,7 +132,7 @@ export type TaskFormFieldsProps = typeof taskFormFieldsProps;
 //     required: ['title', 'priority_id'],
 // };
 
-export function getNewTask(obj: LikeExtended<NewTask>): DeepReadonly<NewTask> {
+export function getNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
@@ -250,7 +257,7 @@ export const validateNewTask: ValidateEntity<NewTask> = (data) =>
 //     required: ['task_id', 'title', 'priority_id'],
 // };
 
-export function getTask(obj: LikeExtended<Task>): DeepReadonly<Task> {
+export function getTask(obj: LikeExtended<Task>): LikeType<Task> {
     const { task_id, title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {

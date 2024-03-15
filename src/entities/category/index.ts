@@ -1,5 +1,5 @@
 import type { Id } from '../types.ts';
-import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
+import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity, LikeType } from '@budarin/validate.ts';
 
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
@@ -63,7 +63,7 @@ export type CategoryFormFieldsProps = typeof categoryFormFieldsProps;
 //     required: ['category_id', 'icon_id', 'category_name'],
 // };
 
-export function getNewCategory(obj: LikeExtended<NewCategory>): DeepReadonly<NewCategory> {
+export function getNewCategory(obj: LikeExtended<NewCategory>): LikeType<NewCategory> {
     const { icon_id, category_name } = obj || {};
 
     return {
@@ -117,7 +117,7 @@ export const validateNewCategory: ValidateEntity<NewCategory> = (data) =>
 //     required: ['category_id', 'icon_id', 'category_name'],
 // };
 
-export function getCategory(obj: LikeExtended<Category>): DeepReadonly<Category> {
+export function getCategory(obj: LikeExtended<Category>): LikeType<Category> {
     const { category_id, icon_id, category_name } = obj || {};
     return {
         category_id: Number(category_id),

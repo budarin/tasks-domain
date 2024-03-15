@@ -1,5 +1,5 @@
 import type { Id } from '../types.ts';
-import type { DeepReadonly, FieldsValidators, LikeExtended, ValidateEntity } from '@budarin/validate.ts';
+import type { DeepReadonly, FieldsValidators, LikeExtended, LikeType, ValidateEntity } from '@budarin/validate.ts';
 
 import { isInteger, isStringWithLength, mustBeInt, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 
@@ -30,7 +30,7 @@ export type IconKeys = keyof Icon;
 //     required: ['icon_id', 'file_name'],
 // };
 
-function getIcon(obj: LikeExtended<Icon>): DeepReadonly<Icon> {
+function getIcon(obj: LikeExtended<Icon>): LikeType<Icon> {
     const { icon_id, file_name } = obj || {};
 
     return {
