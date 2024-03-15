@@ -1,6 +1,7 @@
 import type { Id } from '../types.ts';
 import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate.ts';
 
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 
 export type CategoryId = Id;
@@ -64,7 +65,7 @@ export function getNewCategory(obj: LikeExtended<NewCategory>): DeepReadonly<New
 
     return {
         icon_id: Number(icon_id),
-        category_name,
+        category_name: capitalizeFirstLetter(category_name),
     };
 }
 
@@ -118,7 +119,7 @@ export function getCategory(obj: LikeExtended<Category>): DeepReadonly<Category>
     return {
         category_id: Number(category_id),
         icon_id: Number(icon_id),
-        category_name,
+        category_name: capitalizeFirstLetter(category_name),
     };
 }
 

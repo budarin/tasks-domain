@@ -13,6 +13,7 @@ import {
     stringHasWrongLength,
     validateEntity,
 } from '@budarin/validate.ts';
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 
 export type TaskId = Id;
 export type TaskTitle = string;
@@ -123,7 +124,7 @@ export function getNewTask(obj: LikeExtended<NewTask>): DeepReadonly<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
-        title,
+        title: capitalizeFirstLetter(title),
         priority_id: Number(priority_id),
         category_id: category_id ? Number(category_id) : undefined,
         description,
@@ -249,7 +250,7 @@ export function getTask(obj: LikeExtended<Task>): DeepReadonly<Task> {
 
     return {
         task_id: Number(task_id),
-        title,
+        title: capitalizeFirstLetter(title),
         priority_id: Number(priority_id),
         category_id: category_id ? Number(category_id) : undefined,
         description,
