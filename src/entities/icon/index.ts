@@ -1,5 +1,5 @@
 import type { Id } from '../types.ts';
-import type { DeepReadonly, FieldsValidators, LikeExtended, LikeType, ValidateEntity } from '@budarin/validate.ts';
+import type { FieldsValidators, LikeExtended, LikeType, ValidateEntity } from '@budarin/validate.ts';
 
 import { isInteger, isStringWithLength, mustBeInt, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
 
