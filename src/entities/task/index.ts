@@ -9,17 +9,20 @@ import type {
 } from '@budarin/validate.ts';
 
 import {
+    isString,
     isBoolean,
-    isISODateTimeString,
     isInteger,
-    isStringWithLength,
-    isUndefinedOr,
     mustBeInt,
-    mustBeUndefinedOrBoolean,
+    mustBeString,
+    isUndefinedOr,
+    validateEntity,
+    isStringWithLength,
+    isISODateTimeString,
     mustBeUndefinedOrInt,
     stringHasWrongLength,
-    validateEntity,
+    mustBeUndefinedOrBoolean,
 } from '@budarin/validate.ts';
+
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 
 export type TaskId = Id;
@@ -136,10 +139,10 @@ export function getNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
-        title: capitalizeFirstLetter(title),
+        title: capitalizeFirstLetter(title)?.trim(),
         priority_id: Number(priority_id),
         category_id: category_id ? Number(category_id) : undefined,
-        description,
+        description: description?.trim(),
         expire_date_time,
         deleted,
         completed,
@@ -191,6 +194,7 @@ export const newTaskFields: FieldsValidators = {
     },
     expire_date_time: {
         validators: [
+            [isUndefinedOr(isString), mustBeString(entityName, 'expire_date_time')],
             [
                 isUndefinedOr(isISODateTimeString),
                 `Свойство сущности ${entityName} "expire_date_time" должно быть датой в формате ISO`,
