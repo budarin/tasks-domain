@@ -68,7 +68,7 @@ export function getNewCategory(obj: LikeExtended<NewCategory>): LikeType<NewCate
 
     return {
         icon_id: Number(icon_id),
-        category_name: capitalizeFirstLetter(category_name),
+        category_name: capitalizeFirstLetter(category_name.trim()),
     };
 }
 
@@ -122,7 +122,7 @@ export function getCategory(obj: LikeExtended<Category>): LikeType<Category> {
     return {
         category_id: Number(category_id),
         icon_id: Number(icon_id),
-        category_name: capitalizeFirstLetter(category_name),
+        category_name: capitalizeFirstLetter(category_name.trim()),
     };
 }
 

@@ -139,7 +139,7 @@ export function getNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
-        title: capitalizeFirstLetter(title)?.trim(),
+        title: capitalizeFirstLetter(title.trim()),
         priority_id: Number(priority_id),
         category_id: category_id ? Number(category_id) : undefined,
         description: description?.trim(),
@@ -266,7 +266,7 @@ export function getTask(obj: LikeExtended<Task>): LikeType<Task> {
 
     return {
         task_id: Number(task_id),
-        title: capitalizeFirstLetter(title),
+        title: capitalizeFirstLetter(title.trim()),
         priority_id: Number(priority_id),
         category_id: category_id ? Number(category_id) : undefined,
         description,

@@ -33,7 +33,7 @@
     },
     "dependencies": {
         "@budarin/service-stub": "^1.0.5",
-        "@budarin/validate.ts": "^1.0.26"
+        "@budarin/validate.ts": "^1.0.27"
     },
     "devDependencies": {
         "typescript": "^5.4.3",
