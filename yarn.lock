@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@budarin/service-stub/-/service-stub-1.0.5.tgz#9a27b7f321b8282e422609bd2ffae3b544dca1d1"
   integrity sha512-wnp2BY12IfvzBfmUrthK9+MPag7TzGq5cBWD9IZME2tEo47U808N2F9blh72RlN70iZbpabUlpi7TfQbyGrHNg==
 
-"@budarin/validate.ts@^1.0.27":
-  version "1.0.27"
-  resolved "https://registry.yarnpkg.com/@budarin/validate.ts/-/validate.ts-1.0.27.tgz#59b53adcffeeb18ff9667bb2b6b36b9690d3863a"
-  integrity sha512-z3GjwpF/QX9jT5S6z8BlwV0Bp2itRzeRpAiNJdQmmSnCcm8i3w63gONDolOhOzTzicXhHF4ljFE505jxbToGBA==
+"@budarin/validate.ts@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@budarin/validate.ts/-/validate.ts-1.0.28.tgz#e59fde2f3c4cffec43a46c0cd3445c9d0cb264c2"
+  integrity sha512-V5nTbOZMadMBN0Zxty7tbZgBoQ9OWse9B5wHsqB+8a9Qu0RH8/mUbTsuJZa/nrSHC55ZVKME+DSNORZ74Qvqnw==
   dependencies:
     "@budarin/json-rpc-interface" "^1.0.4"
 
