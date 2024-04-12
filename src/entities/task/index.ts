@@ -67,7 +67,7 @@ export const taskFormFieldsProps = {
         required: true,
         minLength: title_min_length,
         maxLength: title_max_length,
-        placeholder: 'Название новой задачи',
+        placeholder: 'Название задачи',
     },
     priority_id: {
         name: 'priority_id',
