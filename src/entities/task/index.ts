@@ -4,7 +4,6 @@ import type {
     FieldsValidators,
     ValidateEntity,
     DeepReadonly,
-    Like,
     LikeType,
 } from '@budarin/validate.ts';
 
