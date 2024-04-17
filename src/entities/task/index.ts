@@ -1,11 +1,5 @@
 import type { Id } from '../types.ts';
-import type {
-    LikeExtended,
-    FieldsValidators,
-    ValidateEntity,
-    DeepReadonly,
-    LikeType,
-} from '@budarin/validate.ts';
+import type { LikeExtended, FieldsValidators, ValidateEntity, DeepReadonly, LikeType } from '@budarin/validate.ts';
 
 import {
     isString,
@@ -82,7 +76,7 @@ export const taskFormFieldsProps = {
     description: {
         name: 'description',
         type: 'text',
-        placeholder: 'Описание задачи',
+        placeholder: 'Подробное описание задачи',
         minLength: description_min_length,
         maxLength: description_max_length,
     },
