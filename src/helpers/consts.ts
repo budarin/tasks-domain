@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const onInput = (event: Event) => {
-    (event.currentTarget as HTMLObjectElement).setCustomValidity('');
+export const onInput = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    event.currentTarget.setCustomValidity('');
 };
 
 export const getOnInvalid =
