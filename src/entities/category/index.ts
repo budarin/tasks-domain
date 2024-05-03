@@ -46,6 +46,7 @@ export const categoryFormFieldsProps = {
         minLength: category_name_min_length,
         maxLength: category_name_Max_Length,
         placeholder: categoryTitle,
+        autoComplete: 'off',
         onInput,
         onInvalid: getOnInvalid(categoryTitle, category_name_min_length, category_name_Max_Length),
     },

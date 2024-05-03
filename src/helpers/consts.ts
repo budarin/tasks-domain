@@ -3,7 +3,7 @@ export const onInput = (event: Event) => {
 };
 
 export const getOnInvalid =
-    <T extends HTMLInputElement>(title: string, min: number, max: number) =>
+    <T extends HTMLInputElement | HTMLTextAreaElement>(title: string, min: number, max: number) =>
     (event: Event) => {
         const element = event.currentTarget as T;
         const errorMessage = !element.value
