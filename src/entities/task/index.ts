@@ -146,7 +146,7 @@ export function getNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
         title: capitalizeFirstLetter(title.trim()),
         priority_id: Number(priority_id),
         category_id: category_id ? Number(category_id) : undefined,
-        description: description?.trim(),
+        description: description?.replace(/\s*\n+\s*$/, '').trim(),
         expire_date_time,
         deleted,
         completed,
