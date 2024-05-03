@@ -23,24 +23,27 @@ const category_name_Max_Length = 20;
 
 export const categoryFormFieldsProps = {
     category_id: {
+        title: 'Идентификатор категории',
         name: 'category_id',
         type: 'number',
         min: 1,
         required: true,
     },
     icon_id: {
+        title: 'Идентификатор иконки',
         name: 'icon_id',
         type: 'number',
         min: 1,
         required: true,
     },
     category_name: {
+        title: 'Название категории',
         name: 'category_name',
         type: 'text',
         required: true,
         minLength: category_name_min_length,
         maxLength: category_name_Max_Length,
-        placeholder: 'Название новой категории',
+        placeholder: 'Название категории',
     },
 };
 

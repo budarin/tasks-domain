@@ -49,12 +49,14 @@ const description_max_length = 1000;
 
 export const taskFormFieldsProps = {
     task_id: {
+        title: 'Идентификатор задачи',
         name: 'task_id',
         type: 'number',
         min: 1,
         required: true,
     },
     title: {
+        title: 'Название задачи',
         name: 'title',
         type: 'text',
         required: true,
@@ -63,17 +65,20 @@ export const taskFormFieldsProps = {
         placeholder: 'Название задачи',
     },
     priority_id: {
+        title: 'Идентификатор приоритета',
         name: 'priority_id',
         type: 'number',
         min: 1,
         required: true,
     },
     category_id: {
+        title: 'Идентификатор категории',
         name: 'category_id',
         type: 'number',
         min: 1,
     },
     description: {
+        title: 'Описание задачи',
         name: 'description',
         type: 'text',
         placeholder: 'Подробное описание задачи',
