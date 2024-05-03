@@ -33,19 +33,27 @@
     },
     "dependencies": {
         "@budarin/service-stub": "^1.0.5",
-        "@budarin/validate.ts": "^1.0.30",
-        "@types/react": "^18.3.1",
-        "@types/react-dom": "^18.3.0"
+        "@budarin/validate.ts": "^1.0.30"
     },
     "devDependencies": {
         "typescript": "^5.4.5",
+        "@types/react": "^18.3.1",
+        "@types/react-dom": "^18.3.0",
         "zustand": "^4.5.2"
     },
     "peerDependencies": {
+        "@types/react": ">=18.3.1",
+        "@types/react-dom": ">=18.3.0",
         "zustand": ">=4.4.7"
     },
     "peerDependenciesMeta": {
         "zustand": {
+            "optional": true
+        },
+        "@types/react": {
+            "optional": true
+        },
+        "@types/react-dom": {
             "optional": true
         }
     }
