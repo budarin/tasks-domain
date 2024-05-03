@@ -9,9 +9,16 @@ export const getOnInvalid =
     (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const element = event.currentTarget as T;
 
-        const errorMessage = !element.value
-            ? `Поле "${title}" обязательно для заполнения`
-            : `"${title}" должно содержать от ${min} до ${max} символов`;
+        let errorMessage = '';
+        const value = element.value.trim();
+
+        if (!value) {
+            errorMessage = `Поле "${title}" обязательно для заполнения`;
+        }
+
+        if (value && (value.length < min || value.length > max)) {
+            errorMessage = `"${title}" должно содержать от ${min} до ${max} символов`;
+        }
 
         element.setCustomValidity(errorMessage);
     };
