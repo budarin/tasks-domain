@@ -17,6 +17,7 @@ import {
 } from '@budarin/validate.ts';
 
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
+import { getOnInvalid, onInput } from '../../helpers/consts.js';
 
 export type TaskId = Id;
 export type TaskTitle = string;
@@ -47,6 +48,9 @@ const title_max_length = 100;
 const description_min_length = 3;
 const description_max_length = 1000;
 
+const tsakTitle = 'Название задачи';
+const descriptionTitle = 'Описание задачи';
+
 export const taskFormFieldsProps = {
     task_id: {
         title: 'Идентификатор задачи',
@@ -56,13 +60,15 @@ export const taskFormFieldsProps = {
         required: true,
     },
     title: {
-        title: 'Название задачи',
+        title: tsakTitle,
         name: 'title',
         type: 'text',
         required: true,
         minLength: title_min_length,
         maxLength: title_max_length,
-        placeholder: 'Название задачи',
+        placeholder: tsakTitle,
+        onInput,
+        onInvalid: getOnInvalid(tsakTitle, title_min_length, title_max_length),
     },
     priority_id: {
         title: 'Идентификатор приоритета',
@@ -78,12 +84,14 @@ export const taskFormFieldsProps = {
         min: 1,
     },
     description: {
-        title: 'Описание задачи',
+        title: descriptionTitle,
         name: 'description',
         type: 'text',
         placeholder: 'Подробное описание задачи',
         minLength: description_min_length,
         maxLength: description_max_length,
+        onInput,
+        onInvalid: getOnInvalid(descriptionTitle, description_min_length, description_max_length),
     },
 };
 

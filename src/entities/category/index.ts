@@ -3,6 +3,7 @@ import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity, Like
 
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
+import { getOnInvalid, onInput } from '../../helpers/consts.js';
 
 export type CategoryId = Id;
 export type CategoryIconId = Id;
@@ -20,6 +21,7 @@ export type Category = {
 const entityName = 'Категория';
 const category_name_min_length = 3;
 const category_name_Max_Length = 20;
+const categoryTitle = 'Название категории';
 
 export const categoryFormFieldsProps = {
     category_id: {
@@ -37,13 +39,15 @@ export const categoryFormFieldsProps = {
         required: true,
     },
     category_name: {
-        title: 'Название категории',
+        title: categoryTitle,
         name: 'category_name',
         type: 'text',
         required: true,
         minLength: category_name_min_length,
         maxLength: category_name_Max_Length,
-        placeholder: 'Название категории',
+        placeholder: categoryTitle,
+        onInput,
+        onInvalid: getOnInvalid(categoryTitle, category_name_min_length, category_name_Max_Length),
     },
 };
 
