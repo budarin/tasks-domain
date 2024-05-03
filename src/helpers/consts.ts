@@ -10,7 +10,7 @@ export const getOnInvalid =
         const element = event.currentTarget as T;
 
         let errorMessage = '';
-        const value = element.value.trim();
+        const value = element.value.replace(/\n/gm, '').trim();
 
         if (!value) {
             errorMessage = `Поле "${title}" обязательно для заполнения`;
