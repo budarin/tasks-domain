@@ -1,9 +1,9 @@
 import type { Id } from '../types.ts';
 import type { DeepReadonly, LikeExtended, FieldsValidators, ValidateEntity, LikeType } from '@budarin/validate.ts';
 
+import { getOnInvalid, onInput } from '../../helpers/consts.js';
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 import { isInteger, mustBeInt, isStringWithLength, stringHasWrongLength, validateEntity } from '@budarin/validate.ts';
-import { getOnInvalid, onInput } from '../../helpers/consts.js';
 
 export type CategoryId = Id;
 export type CategoryIconId = Id;

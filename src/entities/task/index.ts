@@ -16,8 +16,8 @@ import {
     mustBeUndefinedOrBoolean,
 } from '@budarin/validate.ts';
 
-import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 import { getOnInvalid, onInput } from '../../helpers/consts.js';
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter.js';
 
 export type TaskId = Id;
 export type TaskTitle = string;
