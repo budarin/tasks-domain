@@ -45,19 +45,24 @@ export type Task = {
 const entityName = 'Задача';
 const title_min_length = 3;
 const title_max_length = 100;
-const description_min_length = 3;
-const description_max_length = 1000;
 
 const tsakTitle = 'Название задачи';
-const descriptionTitle = 'Описание задачи';
 
 export const taskFormFieldsProps = {
     task_id: {
         title: 'Идентификатор задачи',
         name: 'task_id',
-        type: 'number',
-        min: 1,
         required: true,
+    },
+    task_date: {
+        title: 'Дата выполнения задачи',
+        name: 'task_date',
+        type: 'date',
+    },
+    task_time: {
+        title: 'Время выполнения задачи',
+        name: 'task_time',
+        type: 'time',
     },
     title: {
         title: tsakTitle,
@@ -74,25 +79,16 @@ export const taskFormFieldsProps = {
     priority_id: {
         title: 'Идентификатор приоритета',
         name: 'priority_id',
-        type: 'number',
-        min: 1,
         required: true,
     },
     category_id: {
         title: 'Идентификатор категории',
         name: 'category_id',
-        type: 'number',
-        min: 1,
     },
     description: {
-        title: descriptionTitle,
+        title: 'Описание задачи',
         name: 'description',
-        type: 'text',
         placeholder: 'Подробное описание задачи',
-        minLength: description_min_length,
-        maxLength: description_max_length,
-        onInput,
-        onInvalid: getOnInvalid(descriptionTitle, description_min_length, description_max_length),
     },
 };
 
@@ -191,14 +187,6 @@ export const newTaskFields: FieldsValidators = {
     },
     category_id: {
         validators: [[isUndefinedOr(isInteger), mustBeUndefinedOrInt(entityName, 'category_id')]],
-    },
-    description: {
-        validators: [
-            [
-                isUndefinedOr(isStringWithLength(description_min_length, description_max_length)),
-                stringHasWrongLength(entityName, 'description', description_min_length, description_max_length),
-            ],
-        ],
     },
     expire_date_time: {
         validators: [

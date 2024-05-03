@@ -27,15 +27,11 @@ export const categoryFormFieldsProps = {
     category_id: {
         title: 'Идентификатор категории',
         name: 'category_id',
-        type: 'number',
-        min: 1,
         required: true,
     },
     icon_id: {
         title: 'Идентификатор иконки',
         name: 'icon_id',
-        type: 'number',
-        min: 1,
         required: true,
     },
     category_name: {
