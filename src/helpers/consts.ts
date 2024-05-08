@@ -5,7 +5,7 @@ export const onInput = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaEl
 };
 
 const getMessage = (title: string, min: number, max: number) =>
-    `Поле "${title}" должно содержать от ${min} до ${max} символов, исключая спейцсимволы и пробелы`;
+    `Поле "${title}" должно содержать минимум ${min} символов, исключая спейцсимволы и пробелы, и максимум ${max} символов`;
 
 export const getOnInvalid =
     <T extends HTMLInputElement | HTMLTextAreaElement>(title: string, min: number, max: number) =>
