@@ -38,7 +38,7 @@ export const categoryFormFieldsProps = {
         title: categoryTitle,
         name: 'category_name',
         type: 'text',
-        pattern: /^[a-zA-Z0-9]{3}.*/,
+        pattern: /^[a-zA-Z0-9]{category_name_min_length}.*/,
         required: true,
         minLength: category_name_min_length,
         maxLength: category_name_Max_Length,
