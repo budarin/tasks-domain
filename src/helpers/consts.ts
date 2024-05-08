@@ -4,6 +4,9 @@ export const onInput = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaEl
     event.currentTarget.setCustomValidity('');
 };
 
+const getMessage = (title: string, min: number, max: number) =>
+    `Поле "${title}" должно содержать от ${min} до ${max} символов, исключая спейцсимволы и пробелы`;
+
 export const getOnInvalid =
     <T extends HTMLInputElement | HTMLTextAreaElement>(title: string, min: number, max: number) =>
     (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -16,8 +19,12 @@ export const getOnInvalid =
             errorMessage = `Поле "${title}" обязательно для заполнения`;
         }
 
+        if (element instanceof HTMLInputElement && element.pattern && !new RegExp(element.pattern).test(value)) {
+            errorMessage = getMessage(title, min, max);
+        }
+
         if (value && (value.length < min || value.length > max)) {
-            errorMessage = `"${title}" должно содержать от ${min} до ${max} символов, исключая спейцсимволы и пробелы`;
+            errorMessage = getMessage(title, min, max);
         }
 
         element.setCustomValidity(errorMessage);
