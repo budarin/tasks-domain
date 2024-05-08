@@ -17,7 +17,7 @@ export const getOnInvalid =
         }
 
         if (value && (value.length < min || value.length > max)) {
-            errorMessage = `"${title}" должно содержать от ${min} до ${max} символов`;
+            errorMessage = `"${title}" должно содержать от ${min} до ${max} символов, исключая спейцсимволы и пробелы`;
         }
 
         element.setCustomValidity(errorMessage);
