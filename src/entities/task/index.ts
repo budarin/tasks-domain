@@ -68,6 +68,7 @@ export const taskFormFieldsProps = {
         title: tsakTitle,
         name: 'title',
         type: 'text',
+        pattern: /^[a-zA-Z0-9]{3}.*/,
         required: true,
         minLength: title_min_length,
         maxLength: title_max_length,
