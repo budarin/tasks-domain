@@ -4,9 +4,6 @@ export const onInput = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaEl
     event.currentTarget.setCustomValidity('');
 };
 
-const getMessage = (title: string, min: number, max: number) =>
-    `Поле "${title}" должно содержать минимум ${min} и максимум ${max} символов`;
-
 export const getOnInvalid =
     <T extends HTMLInputElement | HTMLTextAreaElement>(title: string, min: number, max: number) =>
     (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,7 +19,7 @@ export const getOnInvalid =
         }
 
         if (value && (value.length < min || value.length > max)) {
-            errorMessage = getMessage(title, min, max);
+            errorMessage = `Поле "${title}" должно содержать минимум ${min} и максимум ${max} символов`;
             element.setCustomValidity(errorMessage);
             return;
         }
