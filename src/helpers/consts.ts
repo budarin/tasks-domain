@@ -15,7 +15,7 @@ export const getOnInvalid =
         let errorMessage = '';
         const value = element.value.replace(/\n/gm, '').trim();
 
-        if (element.validity.patternMismatch) {
+        if (!element.validity.patternMismatch) {
             errorMessage = `Поле "${title}" должно начинаться с минимум ${min} символов, исключая спейцсимволы и пробелы`;
         }
 
