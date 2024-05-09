@@ -12,19 +12,19 @@ export const getOnInvalid =
     (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const element = event.currentTarget as T;
 
-        let errorMessage = '';
+        let errorMessage = `Поле "${title}" обязательно для заполнения`;
         const value = element.value.replace(/\n/gm, '').trim();
 
         if (!element.validity.patternMismatch) {
             errorMessage = `Поле "${title}" должно начинаться с минимум ${min} символов, исключая спейцсимволы и пробелы`;
-        }
-
-        if (!value) {
-            errorMessage = `Поле "${title}" обязательно для заполнения`;
+            element.setCustomValidity(errorMessage);
+            return;
         }
 
         if (value && (value.length < min || value.length > max)) {
             errorMessage = getMessage(title, min, max);
+            element.setCustomValidity(errorMessage);
+            return;
         }
 
         element.setCustomValidity(errorMessage);
