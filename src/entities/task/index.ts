@@ -44,7 +44,7 @@ export type Task = {
 
 const entityName = 'Задача';
 const title_min_length = 3;
-const title_max_length = 500;
+const title_max_length = 100;
 
 const tsakTitle = 'Название задачи';
 
@@ -91,6 +91,7 @@ export const taskFormFieldsProps = {
         title: 'Описание задачи',
         name: 'description',
         placeholder: 'Подробное описание задачи',
+        maxLength: 1000,
     },
 };
 
