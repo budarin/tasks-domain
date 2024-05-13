@@ -44,7 +44,7 @@ export type Task = {
 
 const entityName = 'Задача';
 const title_min_length = 3;
-const title_max_length = 100;
+const title_max_length = 500;
 
 const tsakTitle = 'Название задачи';
 
