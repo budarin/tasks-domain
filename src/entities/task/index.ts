@@ -74,7 +74,7 @@ export const taskFormFieldsProps = {
         maxLength: title_max_length,
         placeholder: tsakTitle,
         autoComplete: 'off',
-        spellCheck: 'false',
+        spellCheck: false,
         onInput,
         onInvalid: getOnInvalid(tsakTitle, title_min_length, title_max_length),
     },
