@@ -91,7 +91,7 @@ export const taskFormFieldsProps = {
         title: 'Описание задачи',
         name: 'description',
         placeholder: 'Подробное описание задачи',
-        maxLength: 1000,
+        maxLength: 500,
     },
 };
 
