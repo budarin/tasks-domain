@@ -74,7 +74,7 @@ export const taskFormFieldsProps = {
         maxLength: title_max_length,
         placeholder: tsakTitle,
         autoComplete: 'off',
-        spellCheck: 'false',
+        spellCheck: false,
         onInput,
         onInvalid: getOnInvalid(tsakTitle, title_min_length, title_max_length),
     },
@@ -91,6 +91,7 @@ export const taskFormFieldsProps = {
         title: 'Описание задачи',
         name: 'description',
         placeholder: 'Подробное описание задачи',
+        maxLength: 500,
     },
 };
 
