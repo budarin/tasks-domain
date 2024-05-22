@@ -1,5 +1,5 @@
 {
-    "$id": "https: //budarin/MyTasks/newTaskCategory.json",
+    "$id": "newTaskCategory",
     "type": "object",
     "properties": {
         "icon_id": {
@@ -12,5 +12,6 @@
             "maxLength": 20
         }
     },
-    "required": ["category_id", "icon_id", "category_name"]
+    "required": ["category_id", "icon_id", "category_name"],
+    "additionalProperties": false
 }

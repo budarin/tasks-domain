@@ -1,5 +1,5 @@
 {
-    "$id": "https://budarin/MyTasks/categoryIcon.json",
+    "$id": "Icon",
     "type": "object",
 
     "properties": {

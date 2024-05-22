@@ -33,7 +33,8 @@
     },
     "dependencies": {
         "@budarin/service-stub": "^1.0.5",
-        "@budarin/validate.ts": "^1.0.30"
+        "@budarin/validate.ts": "^1.0.30",
+        "json-schema-to-typescript": "^14.0.4"
     },
     "devDependencies": {
         "@types/react": "^18.3.1",
