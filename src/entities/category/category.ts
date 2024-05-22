@@ -5,8 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface NewTaskCategory {
-  category_id: number;
-  icon_id: number;
-  category_name: string;
+export default interface NewTaskCategory {
+    category_id: number;
+    icon_id: number;
+    category_name: string;
 }
