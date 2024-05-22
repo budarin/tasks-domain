@@ -21,24 +21,7 @@ export type PiorityNormal = typeof PRIORITY_NORMAL;
 export type PiorityAboveNormal = typeof PRIORITY_ABOVE_NORMAL;
 export type PiorityHigh = typeof PRIORITY_HIGH;
 
-// const prioritySchema: JSONSchemaType<Priority> = {
-//     $id: 'https://budarin/MyTasks/taskPriority.json',
-//
-//     type: 'object',
-//
-//     properties: {
-//         priority_id: {
-//             type: 'integer',
-//         },
-//
-//         priority_name: {
-//             type: 'string',
-//             enum: [],
-//         },
-//     },
-//
-//     required: ['priority_id', 'priority_name'],
-// };
+// Priority - runtime validation
 
 function getPriority(obj: LikeExtended<Priority>): LikeType<Priority> {
     const { priority_id, priority_name } = obj || {};

@@ -1,0 +1,48 @@
+{
+    "$id": "https://budarin/MyTasks/newTask.json",
+    "type": "object",
+
+    "properties": {
+        "task_id": {
+            "type": "integer"
+        },
+
+        "title": {
+            "type": "string"
+        },
+
+        "priority_id": {
+            "type": "integer"
+        },
+
+        "category_id": {
+            "type": "integer",
+            "nullable": true
+        },
+
+        "description": {
+            "type": "string",
+            "nullable": true
+        },
+
+        "expire_date_time": {
+            "type": "string",
+            "format": "iso-date-date",
+            "nullable": true
+        },
+
+        "deleted": {
+            "type": "boolean",
+            "nullable": true,
+            "default": false
+        },
+
+        "completed": {
+            "type": "boolean",
+            "nullable": true,
+            "default": false
+        }
+    },
+
+    "required": ["task_id", "title", "priority_id"]
+}

@@ -11,24 +11,7 @@ export type Icon = {
 };
 export type IconKeys = keyof Icon;
 
-// const iconSchema: JSONSchemaType<Icon> = {
-//     $id: 'https://budarin/MyTasks/categoryIcon.json',
-//     type: 'object',
-//
-//     properties: {
-//         icon_id: {
-//             type: 'integer',
-//         },
-//
-//         file_name: {
-//             type: 'string',
-//             minLength: 5,
-//             maxLength: 20,
-//         },
-//     },
-//
-//     required: ['icon_id', 'file_name'],
-// };
+// Icon - runtime validation
 
 function getIcon(obj: LikeExtended<Icon>): LikeType<Icon> {
     const { icon_id, file_name } = obj || {};

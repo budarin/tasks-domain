@@ -96,50 +96,7 @@ export const taskFormFieldsProps = {
 
 export type TaskFormFieldsProps = typeof taskFormFieldsProps;
 
-// export const newTaskSchema: JSONSchemaType<NewTask> = {
-//     $id: 'https://budarin/MyTasks/newTask.json',
-//     type: 'object',
-//
-//     properties: {
-//         title: {
-//             type: 'string',
-//         },
-//
-//         priority_id: {
-//             type: 'integer',
-//         },
-//
-//         category_id: {
-//             type: 'integer',
-//             nullable: true,
-//         },
-//
-//         description: {
-//             type: 'string',
-//             nullable: true,
-//         },
-//
-//         expire_date_time: {
-//             type: 'string',
-//             format: 'iso-date-date',
-//             nullable: true,
-//         },
-//
-//         deleted: {
-//             type: 'boolean',
-//             nullable: true,
-//             default: false,
-//         },
-//
-//         completed: {
-//             type: 'boolean',
-//             nullable: true,
-//             default: false,
-//         },
-//     },
-//
-//     required: ['title', 'priority_id'],
-// };
+// NewTask - runtime validation
 
 export function getNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
@@ -210,54 +167,7 @@ export const newTaskFields: FieldsValidators = {
 export const validateNewTask: ValidateEntity<NewTask> = (data) =>
     validateEntity(data, newTaskFields, getNewTask, entityName);
 
-// export const taskSchema: JSONSchemaType<Task> = {
-//     $id: 'https://budarin/MyTasks/newTask.json',
-//     type: 'object',
-//
-//     properties: {
-//         task_id: {
-//             type: 'integer',
-//         },
-//
-//         title: {
-//             type: 'string',
-//         },
-//
-//         priority_id: {
-//             type: 'integer',
-//         },
-//
-//         category_id: {
-//             type: 'integer',
-//             nullable: true,
-//         },
-//
-//         description: {
-//             type: 'string',
-//             nullable: true,
-//         },
-//
-//         expire_date_time: {
-//             type: 'string',
-//             format: 'iso-date-date',
-//             nullable: true,
-//         },
-//
-//         deleted: {
-//             type: 'boolean',
-//             nullable: true,
-//             default: false,
-//         },
-//
-//         completed: {
-//             type: 'boolean',
-//             nullable: true,
-//             default: false,
-//         },
-//     },
-//
-//     required: ['task_id', 'title', 'priority_id'],
-// };
+// Task - runtime validation
 
 export function getTask(obj: LikeExtended<Task>): LikeType<Task> {
     const { task_id, title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};

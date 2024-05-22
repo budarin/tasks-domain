@@ -1,0 +1,20 @@
+{
+    "$id": "https://budarin/MyTasks/newTaskCategory.json",
+    "type": "object",
+    "properties": {
+        "category_id": {
+            "type": "integer"
+        },
+
+        "icon_id": {
+            "type": "integer"
+        },
+
+        "category_name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 20
+        }
+    },
+    "required": ["category_id", "icon_id", "category_name"]
+}

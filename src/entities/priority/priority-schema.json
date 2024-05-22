@@ -1,0 +1,18 @@
+{
+    "$id": "https://budarin/MyTasks/taskPriority.json",
+
+    "type": "object",
+
+    "properties": {
+        "priority_id": {
+            "type": "integer"
+        },
+
+        "priority_name": {
+            "type": "string",
+            "enum": []
+        }
+    },
+
+    "required": ["priority_id", "priority_name"]
+}

@@ -52,22 +52,7 @@ export const categoryFormFieldsProps = {
 
 export type CategoryFormFieldsProps = typeof categoryFormFieldsProps;
 
-// const newCategorySchema = {
-//     $id: 'https://budarin/MyTasks/newTaskCategory.json',
-//     type: 'object',
-//     properties: {
-//         icon_id: {
-//             type: 'integer',
-//         },
-//
-//         category_name: {
-//             type: 'string',
-//             minLength: 3,
-//             maxLength: 20,
-//         },
-//     },
-//     required: ['category_id', 'icon_id', 'category_name'],
-// };
+// NewCategory - runtime validation
 
 export function getNewCategory(obj: LikeExtended<NewCategory>): LikeType<NewCategory> {
     const { icon_id, category_name } = obj || {};
@@ -102,26 +87,7 @@ const newCategoryFields: FieldsValidators = {
 export const validateNewCategory: ValidateEntity<NewCategory> = (data) =>
     validateEntity(data, newCategoryFields, getNewCategory, entityName);
 
-// const categorySchema = {
-//     $id: 'https://budarin/MyTasks/newTaskCategory.json',
-//     type: 'object',
-//     properties: {
-//         category_id: {
-//             type: 'integer',
-//         },
-//
-//         icon_id: {
-//             type: 'integer',
-//         },
-//
-//         category_name: {
-//             type: 'string',
-//             minLength: 3,
-//             maxLength: 20,
-//         },
-//     },
-//     required: ['category_id', 'icon_id', 'category_name'],
-// };
+// Category - runtime validation
 
 export function getCategory(obj: LikeExtended<Category>): LikeType<Category> {
     const { category_id, icon_id, category_name } = obj || {};
