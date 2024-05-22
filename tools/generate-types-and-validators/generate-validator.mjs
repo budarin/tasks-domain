@@ -1,6 +1,9 @@
 import fs from 'fs';
 import Ajv from 'ajv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ajv = new Ajv({ code: { source: true } });
 
 const schema = {
@@ -16,4 +19,4 @@ const schema = {
 const validateFunction = ajv.compile(schema);
 const validateFunctionSourceCode = validateFunction.toString();
 
-fs.writeFileSync('validateData.js', `module.exports = ${validateFunctionSourceCode};`);
+fs.writeFileSync(path.join(__dirname, 'validate.js'), `module.exports = ${validateFunctionSourceCode};`);
