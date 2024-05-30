@@ -13,7 +13,7 @@ export const getOnInvalid =
         const value = element.value.replace(/\n/gm, '').trim();
 
         if (element.validity.patternMismatch) {
-            errorMessage = `Поле "${title}" должно начинаться с минимум ${min} символов, исключая спейцсимволы и пробелы`;
+            errorMessage = `Поле "${title}" должно начинаться с минимум ${min} символов, исключая спецсимволы и пробелы`;
             element.setCustomValidity(errorMessage);
             return;
         }
