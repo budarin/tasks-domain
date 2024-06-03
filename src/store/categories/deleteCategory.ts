@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.js';
 import type { Category } from '../../entities/index.ts';
@@ -35,7 +35,7 @@ function updateState(state: TasksStoreState, category: Category): TasksStoreStat
     };
 }
 
-function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
+function deleteCategoryFromStore(category: Category): DeepReadonly<ResultOrError<Category>> {
     const state = store.getState();
 
     if (isCategoryNotFound(state, category)) {
@@ -53,7 +53,7 @@ function deleteCategoryFromStore(category: Category): ResultOrError<Category> {
         logger.debug('deleteCategory:', category);
     }
 
-    return { result: category };
+    return Object.freeze({ result: category });
 }
 
 export const deleteCategory = createStoreMethod<Category>(validateCategory, deleteCategoryFromStore);

@@ -2,7 +2,7 @@ import { shallow } from 'zustand/shallow';
 
 import type { TasksStoreState } from '../index.ts';
 import type { Category } from '../../entities/index.ts';
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import { logger, store } from '../index.js';
 import { handleError } from '../_helpers/handleError.js';
@@ -34,7 +34,7 @@ function updateState(state: TasksStoreState, category: Category): TasksStoreStat
     };
 }
 
-function updateCategoryInStore(category: Category): ResultOrError<Category> {
+function updateCategoryInStore(category: Category): DeepReadonly<ResultOrError<Category>> {
     const state = store.getState();
 
     if (shallow(category, state.categories.byId[category.category_id])) {
@@ -60,7 +60,7 @@ function updateCategoryInStore(category: Category): ResultOrError<Category> {
         logger.debug('updateCategory:', category);
     }
 
-    return { result: category };
+    return Object.freeze({ result: category });
 }
 
 export const updateCategory = createStoreMethod<Category>(validateCategory, updateCategoryInStore);

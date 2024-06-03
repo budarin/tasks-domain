@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.ts';
 import type { Priority } from '../../entities/index.ts';
@@ -40,7 +40,7 @@ function updateStateWithNewPriority(state: TasksStoreState, priority: Priority):
     };
 }
 
-function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
+function addPriorityToStore(priority: Priority): DeepReadonly<ResultOrError<Priority>> {
     const state = store.getState();
 
     if (hasDuplicatePriorityId(state, priority)) {
@@ -58,7 +58,7 @@ function addPriorityToStore(priority: Priority): ResultOrError<Priority> {
         logger.debug('addPriority:', priority);
     }
 
-    return { result: priority };
+    return Object.freeze({ result: priority });
 }
 
 export const addPriority = createStoreMethod<Priority>(validatePriority, addPriorityToStore);

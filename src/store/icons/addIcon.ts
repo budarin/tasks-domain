@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.ts';
 import type { Icon } from '../../entities/index.ts';
@@ -39,7 +39,7 @@ function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): TasksStoreS
     };
 }
 
-function addIconToStore(icon: Icon): ResultOrError<Icon> {
+function addIconToStore(icon: Icon): DeepReadonly<ResultOrError<Icon>> {
     const state = store.getState();
 
     if (hasDuplicateIconId(state, icon)) {
@@ -57,7 +57,7 @@ function addIconToStore(icon: Icon): ResultOrError<Icon> {
         logger.debug('addIcon:', icon);
     }
 
-    return { result: icon };
+    return Object.freeze({ result: icon });
 }
 
 export const addIcon = createStoreMethod<Icon>(validateIcon, addIconToStore);
