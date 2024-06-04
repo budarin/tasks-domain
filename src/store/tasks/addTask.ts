@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.js';
 import type { Task } from '../../entities/index.js';
@@ -34,7 +34,7 @@ function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     };
 }
 
-function addTaskToStore(task: Task): ResultOrError<Task> {
+function addTaskToStore(task: Task): DeepReadonly<ResultOrError<Task>> {
     const state = store.getState();
 
     if (hasDuplicateTaskId(state, task)) {
@@ -56,7 +56,7 @@ function addTaskToStore(task: Task): ResultOrError<Task> {
         logger.debug('addTask:', task);
     }
 
-    return { result: task };
+    return Object.freeze({ result: task });
 }
 
 export const addTask = createStoreMethod<Task>(validateTask, addTaskToStore);

@@ -1,14 +1,14 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import { logger } from '../index.js';
 
-export function handleError<T>(task: T, errorMessage: string): ResultOrError<T> {
+export function handleError<T>(task: T, errorMessage: string): DeepReadonly<ResultOrError<T>> {
     logger.error(errorMessage, task);
 
-    return {
+    return Object.freeze({
         error: {
             message: errorMessage,
             data: task,
         },
-    };
+    });
 }

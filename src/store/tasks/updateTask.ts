@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.ts';
 import type { Task } from '../../entities/index.ts';
@@ -30,7 +30,7 @@ function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     };
 }
 
-function updateTasksStore(task: Task): ResultOrError<Task> {
+function updateTasksStore(task: Task): DeepReadonly<ResultOrError<Task>> {
     const state = store.getState();
 
     if (isTaskIdNotFound(state, task)) {
@@ -52,7 +52,7 @@ function updateTasksStore(task: Task): ResultOrError<Task> {
         logger.debug('updateTask:', task);
     }
 
-    return { result: task };
+    return Object.freeze({ result: task });
 }
 
 export const updateTask = createStoreMethod<Task>(validateTask, updateTasksStore);

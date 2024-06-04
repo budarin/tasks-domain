@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/validate.ts';
+import type { DeepReadonly, ResultOrError } from '@budarin/validate.ts';
 
 import type { TasksStoreState } from '../index.ts';
 import type { Task } from '../../entities/index.ts';
@@ -31,7 +31,7 @@ function updateState(state: TasksStoreState, task: Task): TasksStoreState {
     };
 }
 
-function deleteTaskFromStore(task: Task): ResultOrError<Task> {
+function deleteTaskFromStore(task: Task): DeepReadonly<ResultOrError<Task>> {
     const state = store.getState();
 
     // есть ли задача в хранилище?
@@ -46,7 +46,7 @@ function deleteTaskFromStore(task: Task): ResultOrError<Task> {
         logger.debug('deleteTask:', task);
     }
 
-    return { result: task };
+    return Object.freeze({ result: task });
 }
 
 export const deleteTask = createStoreMethod<Task>(validateTask, deleteTaskFromStore);
