@@ -99,7 +99,7 @@ export type TaskFormFieldsProps = typeof taskFormFieldsProps;
 
 // NewTask - runtime validation
 
-export function getNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
+export function extractNewTask(obj: LikeExtended<NewTask>): LikeType<NewTask> {
     const { title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
@@ -166,11 +166,11 @@ export const newTaskFields: FieldsValidators = {
 };
 
 export const validateNewTask: ValidateEntity<NewTask> = (data) =>
-    validateEntity(data, newTaskFields, getNewTask, entityName);
+    validateEntity(data, newTaskFields, extractNewTask, entityName);
 
 // Task - runtime validation
 
-export function getTask(obj: LikeExtended<Task>): LikeType<Task> {
+export function extractTask(obj: LikeExtended<Task>): LikeType<Task> {
     const { task_id, title, priority_id, category_id, description, expire_date_time, deleted, completed } = obj || {};
 
     return {
@@ -213,4 +213,4 @@ const taskFields: FieldsValidators = {
     ...newTaskFields,
 };
 
-export const validateTask: ValidateEntity<Task> = (data) => validateEntity(data, taskFields, getTask, entityName);
+export const validateTask: ValidateEntity<Task> = (data) => validateEntity(data, taskFields, extractTask, entityName);

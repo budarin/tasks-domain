@@ -1,4 +1,5 @@
 export * from './entities/index.js';
+
 export type {
     IconState,
     PriorityState,
@@ -7,19 +8,34 @@ export type {
     TasksState,
     TasksStoreState,
 } from './store/index.js';
+
 export { tasksStoreState, initTasksStore } from './store/index.js';
 
 // Category
 export * from './store/categories/addCategory.js';
 export * from './store/categories/deleteCategory.js';
 export * from './store/categories/updateCategory.js';
+export * from './store/categories/getCategory.js';
+export * from './store/categories/getCategories.js';
+export * from './store/categories/useCategory.js';
+export * from './store/categories/useCategories.js';
 // Icon
 export * from './store/icons/addIcon.js';
+export * from './store/icons/getIcon.js';
+export * from './store/icons/getIcons.js';
+export * from './store/icons/useIcon.js';
+export * from './store/icons/useIcons.js';
 // Priority
 export * from './store/priorities/addPriority.js';
+export * from './store/priorities/getPriority.js';
+export * from './store/priorities/getPriorities.js';
+export * from './store/priorities/usePriority.js';
+export * from './store/priorities/usePriorities.js';
 // Task
 export * from './store/tasks/addTask.js';
 export * from './store/tasks/deleteTask.js';
 export * from './store/tasks/updateTask.js';
-
-// Selectors
+export * from './store/tasks/getTask.js';
+export * from './store/tasks/getTasks.js';
+export * from './store/tasks/useTasks.js';
+export * from './store/tasks/useTask.js';

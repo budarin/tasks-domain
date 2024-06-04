@@ -1,8 +1,8 @@
 import { createServiceStub } from '@budarin/service-stub';
 
 import type { StoreApi, UseBoundStore } from 'zustand';
-import type { Id, Timestamp } from '../entities/types.ts';
-import type { Category, Icon, Priority, Task } from '../entities/index.ts';
+import type { Id, Timestamp } from '../entities/types.js';
+import type { Category, Icon, Priority, Task } from '../entities/index.js';
 
 export const tasksStoreState = {
     icons: {
@@ -76,6 +76,7 @@ export type TasksStoreState = {
 };
 
 export type TasksStore = UseBoundStore<StoreApi<TasksStoreState>>;
+
 // inner variable
 export let store: TasksStore = createServiceStub(
     'Попытка использовать TasksStore до его инициализации!',

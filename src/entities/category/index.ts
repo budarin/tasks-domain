@@ -54,7 +54,7 @@ export type CategoryFormFieldsProps = typeof categoryFormFieldsProps;
 
 // NewCategory - runtime validation
 
-export function getNewCategory(obj: LikeExtended<NewCategory>): LikeType<NewCategory> {
+export function extractNewCategory(obj: LikeExtended<NewCategory>): LikeType<NewCategory> {
     const { icon_id, category_name } = obj || {};
 
     return {
@@ -85,11 +85,11 @@ const newCategoryFields: FieldsValidators = {
 };
 
 export const validateNewCategory: ValidateEntity<NewCategory> = (data) =>
-    validateEntity(data, newCategoryFields, getNewCategory, entityName);
+    validateEntity(data, newCategoryFields, extractNewCategory, entityName);
 
 // Category - runtime validation
 
-export function getCategory(obj: LikeExtended<Category>): LikeType<Category> {
+export function extractCategory(obj: LikeExtended<Category>): LikeType<Category> {
     const { category_id, icon_id, category_name } = obj || {};
     return {
         category_id: Number(category_id),
@@ -118,4 +118,4 @@ const categoryFields: FieldsValidators = {
 };
 
 export const validateCategory: ValidateEntity<Category> = (data) =>
-    validateEntity(data, categoryFields, getCategory, entityName);
+    validateEntity(data, categoryFields, extractCategory, entityName);

@@ -23,7 +23,7 @@ export type PiorityHigh = typeof PRIORITY_HIGH;
 
 // Priority - runtime validation
 
-function getPriority(obj: LikeExtended<Priority>): LikeType<Priority> {
+function extractPriority(obj: LikeExtended<Priority>): LikeType<Priority> {
     const { priority_id, priority_name } = obj || {};
 
     return { priority_id: Number(priority_id), priority_name };
@@ -47,4 +47,4 @@ const priorityFields: FieldsValidators = {
 };
 
 export const validatePriority: ValidateEntity<Priority> = (data) =>
-    validateEntity(data, priorityFields, getPriority, entityName);
+    validateEntity(data, priorityFields, extractPriority, entityName);

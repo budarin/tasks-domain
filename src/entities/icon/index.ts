@@ -13,7 +13,7 @@ export type IconKeys = keyof Icon;
 
 // Icon - runtime validation
 
-function getIcon(obj: LikeExtended<Icon>): LikeType<Icon> {
+function extractIcon(obj: LikeExtended<Icon>): LikeType<Icon> {
     const { icon_id, file_name } = obj || {};
 
     return {
@@ -42,4 +42,4 @@ const iconFields: FieldsValidators = {
     },
 };
 
-export const validateIcon: ValidateEntity<Icon> = (data) => validateEntity(data, iconFields, getIcon, entityName);
+export const validateIcon: ValidateEntity<Icon> = (data) => validateEntity(data, iconFields, extractIcon, entityName);
