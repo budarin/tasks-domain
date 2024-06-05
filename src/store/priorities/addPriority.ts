@@ -41,6 +41,8 @@ function updateStateWithNewPriority(state: TasksStoreState, priority: Priority):
 }
 
 function addPriorityToStore(priority: Priority): DeepReadonly<ResultOrError<Priority>> {
+    logger.debug('addPriority:', priority);
+
     const state = store.getState();
 
     if (hasDuplicatePriorityId(state, priority)) {
@@ -55,7 +57,6 @@ function addPriorityToStore(priority: Priority): DeepReadonly<ResultOrError<Prio
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('addPriority:', priority);
     }
 
     return Object.freeze({ result: priority });

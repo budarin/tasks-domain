@@ -31,6 +31,8 @@ function updateState(state: TasksStoreState, task: Task): TasksStoreState {
 }
 
 function updateTasksStore(task: Task): DeepReadonly<ResultOrError<Task>> {
+    logger.debug('updateTask:', task);
+
     const state = store.getState();
 
     if (isTaskIdNotFound(state, task)) {
@@ -49,7 +51,6 @@ function updateTasksStore(task: Task): DeepReadonly<ResultOrError<Task>> {
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('updateTask:', task);
     }
 
     return Object.freeze({ result: task });

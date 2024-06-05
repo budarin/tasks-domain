@@ -40,6 +40,8 @@ function updateStateWithNewIcon(state: TasksStoreState, icon: Icon): TasksStoreS
 }
 
 function addIconToStore(icon: Icon): DeepReadonly<ResultOrError<Icon>> {
+    logger.debug('addIcon:', icon);
+
     const state = store.getState();
 
     if (hasDuplicateIconId(state, icon)) {
@@ -54,7 +56,6 @@ function addIconToStore(icon: Icon): DeepReadonly<ResultOrError<Icon>> {
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('addIcon:', icon);
     }
 
     return Object.freeze({ result: icon });

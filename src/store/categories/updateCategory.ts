@@ -35,6 +35,8 @@ function updateState(state: TasksStoreState, category: Category): TasksStoreStat
 }
 
 function updateCategoryInStore(category: Category): DeepReadonly<ResultOrError<Category>> {
+    logger.debug('updateCategory:', category);
+
     const state = store.getState();
 
     if (shallow(category, state.categories.byId[category.category_id])) {
@@ -60,7 +62,6 @@ function updateCategoryInStore(category: Category): DeepReadonly<ResultOrError<C
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('updateCategory:', category);
     }
 
     return Object.freeze({ result: category });

@@ -32,6 +32,8 @@ function updateState(state: TasksStoreState, task: Task): TasksStoreState {
 }
 
 function deleteTaskFromStore(task: Task): DeepReadonly<ResultOrError<Task>> {
+    logger.debug('deleteTask:', task);
+
     const state = store.getState();
 
     // есть ли задача в хранилище?
@@ -43,7 +45,6 @@ function deleteTaskFromStore(task: Task): DeepReadonly<ResultOrError<Task>> {
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('deleteTask:', task);
     }
 
     return Object.freeze({ result: task });

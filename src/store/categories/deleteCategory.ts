@@ -38,6 +38,8 @@ function updateState(state: TasksStoreState, category: Category): TasksStoreStat
 }
 
 function deleteCategoryFromStore(category: Category): DeepReadonly<ResultOrError<Category>> {
+    logger.debug('deleteCategory:', category);
+    
     const state = store.getState();
 
     if (isCategoryNotFound(state, category)) {
@@ -52,7 +54,6 @@ function deleteCategoryFromStore(category: Category): DeepReadonly<ResultOrError
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('deleteCategory:', category);
     }
 
     return Object.freeze({ result: category });

@@ -35,6 +35,8 @@ function updateState(state: TasksStoreState, task: Task): TasksStoreState {
 }
 
 function addTaskToStore(task: Task): DeepReadonly<ResultOrError<Task>> {
+    logger.debug('addTask:', task);
+
     const state = store.getState();
 
     if (hasDuplicateTaskId(state, task)) {
@@ -53,7 +55,6 @@ function addTaskToStore(task: Task): DeepReadonly<ResultOrError<Task>> {
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('addTask:', task);
     }
 
     return Object.freeze({ result: task });

@@ -31,6 +31,8 @@ function updateState(state: TasksStoreState, category: Category): TasksStoreStat
 }
 
 function addCategoryToStore(category: Category): DeepReadonly<ResultOrError<Category>> {
+    logger.debug('addCategory:', category);
+    
     const state = store.getState();
 
     if (hasDuplicateCategoryId(state, category)) {
@@ -49,7 +51,6 @@ function addCategoryToStore(category: Category): DeepReadonly<ResultOrError<Cate
 
     if (nextState !== state) {
         store.setState(nextState);
-        logger.debug('addCategory:', category);
     }
 
     return Object.freeze({ result: category });
