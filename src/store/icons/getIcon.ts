@@ -3,11 +3,7 @@ import type { Icon, IconId } from '../../entities/index.js';
 
 import { store } from '../index.js';
 
-export const getIcon = (id?: IconId): DeepReadonly<Icon> | undefined => {
-    if (!id) {
-        return;
-    }
-
+export const getIcon = (id: IconId): DeepReadonly<Icon> | undefined => {
     const priority = store.getState().icons.byId[id];
 
     return Object.freeze(priority);

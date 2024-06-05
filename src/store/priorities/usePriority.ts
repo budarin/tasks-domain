@@ -6,11 +6,7 @@ import type { Priority, PriorityId } from '../../entities/index.js';
 
 import { store } from '../index.js';
 
-export const usePriority = (id?: PriorityId): DeepReadonly<Priority> | undefined => {
-    if (!id) {
-        return;
-    }
-
+export const usePriority = (id: PriorityId): DeepReadonly<Priority> | undefined => {
     const selector = useCallback((state: TasksStoreState) => state.priorities.byId[id], [id]);
 
     return Object.freeze(store(selector));

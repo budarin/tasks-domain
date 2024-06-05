@@ -6,11 +6,7 @@ import type { Icon, IconId } from '../../entities/index.js';
 
 import { store } from '../index.js';
 
-export const useIcon = (id?: IconId): DeepReadonly<Icon> | undefined => {
-    if (!id) {
-        return;
-    }
-
+export const useIcon = (id: IconId): DeepReadonly<Icon> | undefined => {
     const selector = useCallback((state: TasksStoreState) => state.icons.byId[id], [id]);
 
     return Object.freeze(store(selector));

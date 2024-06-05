@@ -50,7 +50,10 @@ function updateCategoryInStore(category: Category): DeepReadonly<ResultOrError<C
     }
 
     if (hasDuplicateCategoryName(state, category)) {
-        return handleError(category, 'Попытка изменить имя категории на имя уже существующей категории');
+        return handleError(
+            category,
+            'Попытка изменить имя категории на имя уже существующей категории',
+        );
     }
 
     const nextState = updateState(state, category);

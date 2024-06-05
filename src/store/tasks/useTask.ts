@@ -6,11 +6,7 @@ import type { TaskId } from '../../entities/index.js';
 
 import { store } from '../index.js';
 
-export const useTask = (id?: TaskId): DeepReadonly<ExtendedTask> | undefined => {
-    if (!id) {
-        return;
-    }
-
+export const useTask = (id: TaskId): DeepReadonly<ExtendedTask> | undefined => {
     const selector = useCallback((state: TasksStoreState) => state.tasks.byId[id], [id]);
 
     return Object.freeze(store(selector));

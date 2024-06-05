@@ -15,7 +15,9 @@ import { createStoreMethod } from '../_helpers/createStoreMethod.js';
 // - удалить запись из idsByCategoryId
 
 function isCategoryUsed(state: TasksStoreState, category: Category): boolean {
-    return Boolean(Object.values(state.tasks.byId).find((task) => task.category_id === category.category_id));
+    return Boolean(
+        Object.values(state.tasks.byId).find((task) => task.category_id === category.category_id),
+    );
 }
 
 function updateState(state: TasksStoreState, category: Category): TasksStoreState {
@@ -56,4 +58,7 @@ function deleteCategoryFromStore(category: Category): DeepReadonly<ResultOrError
     return Object.freeze({ result: category });
 }
 
-export const deleteCategory = createStoreMethod<Category>(validateCategory, deleteCategoryFromStore);
+export const deleteCategory = createStoreMethod<Category>(
+    validateCategory,
+    deleteCategoryFromStore,
+);
