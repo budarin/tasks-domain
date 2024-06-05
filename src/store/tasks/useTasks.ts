@@ -5,8 +5,8 @@ import type { ExtendedTask, TasksStoreState } from '../index.js';
 
 import { store } from '../index.js';
 
-export const useTasks = (): DeepReadonly<ExtendedTask[]> => {
-    const selector = (state: TasksStoreState) => Object.values(state.tasks.byId);
+const selector = (state: TasksStoreState) => Object.values(state.tasks.byId);
 
+export const useTasks = (): DeepReadonly<ExtendedTask[]> => {
     return Object.freeze(store(useShallow(selector)));
 };

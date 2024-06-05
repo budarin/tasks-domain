@@ -6,8 +6,8 @@ import type { TasksStoreState } from '../index.js';
 
 import { store } from '../index.js';
 
-export const useIcons = (): DeepReadonly<Icon[]> => {
-    const selector = (state: TasksStoreState) => Object.values(state.icons.byId);
+const selector = (state: TasksStoreState) => Object.values(state.icons.byId);
 
+export const useIcons = (): DeepReadonly<Icon[]> => {
     return Object.freeze(store(useShallow(selector)));
 };

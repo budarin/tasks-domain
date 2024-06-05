@@ -6,8 +6,8 @@ import type { TasksStoreState } from '../index.js';
 
 import { store } from '../index.js';
 
-export const useCategories = (): DeepReadonly<Category[]> => {
-    const selector = (state: TasksStoreState) => Object.values(state.categories.byId);
+const selector = (state: TasksStoreState) => Object.values(state.categories.byId);
 
+export const useCategories = (): DeepReadonly<Category[]> => {
     return Object.freeze(store(useShallow(selector)));
 };
