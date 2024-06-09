@@ -4,25 +4,32 @@
 
     "properties": {
         "task_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "title": {
-            "type": "string"
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
         },
 
         "priority_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "category_id": {
             "type": "integer",
+            "minimum": 1,
             "nullable": true
         },
 
         "description": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "minLength": 3,
+            "maxLength": 500
         },
 
         "expire_date_time": {

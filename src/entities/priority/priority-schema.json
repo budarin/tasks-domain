@@ -5,12 +5,13 @@
 
     "properties": {
         "priority_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "priority_name": {
             "type": "string",
-            "enum": []
+            "enum": ["низкий", "нормальный", "повышенный"]
         }
     },
 

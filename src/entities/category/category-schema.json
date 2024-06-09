@@ -3,11 +3,13 @@
     "type": "object",
     "properties": {
         "category_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "icon_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "category_name": {

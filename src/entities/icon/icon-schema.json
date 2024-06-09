@@ -4,13 +4,14 @@
 
     "properties": {
         "icon_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "file_name": {
             "type": "string",
             "minLength": 5,
-            "maxLength": 20
+            "maxLength": 128
         }
     },
 

@@ -3,7 +3,8 @@
     "type": "object",
     "properties": {
         "icon_id": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
         },
 
         "category_name": {
