@@ -1,22 +1,25 @@
 import type { Id } from '../types.ts';
-import type { LikeExtended, FieldsValidators, ValidateEntity, DeepReadonly, LikeType } from '@budarin/validate.ts';
+import type {
+    LikeExtended,
+    FieldsValidators,
+    ValidateEntity,
+    LikeType,
+} from '@budarin/validate.ts';
 
 import { isInteger, mustBeInt, validateEntity } from '@budarin/validate.ts';
 
 export type PriorityId = Id;
-export type PriorityTitle = PiorityLow | PiorityNormal | PiorityAboveNormal | PiorityHigh;
+export type PriorityTitle = PiorityNormal | PiorityAboveNormal | PiorityHigh;
 export type Priority = {
     priority_id: PriorityId;
     priority_name: PriorityTitle;
 };
 
-export const PRIORITY_LOW = 'низкий';
-export const PRIORITY_NORMAL = 'нормальный';
+export const PRIORITY_NORMAL = 'обычный';
 export const PRIORITY_ABOVE_NORMAL = 'повышенный';
 export const PRIORITY_HIGH = 'высокий';
-export const PRIORITIES = [PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_ABOVE_NORMAL, PRIORITY_HIGH];
+export const PRIORITIES = [PRIORITY_NORMAL, PRIORITY_ABOVE_NORMAL, PRIORITY_HIGH];
 
-export type PiorityLow = typeof PRIORITY_LOW;
 export type PiorityNormal = typeof PRIORITY_NORMAL;
 export type PiorityAboveNormal = typeof PRIORITY_ABOVE_NORMAL;
 export type PiorityHigh = typeof PRIORITY_HIGH;
