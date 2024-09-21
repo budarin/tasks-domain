@@ -1,7 +1,6 @@
 {
     // text editor
     "editor.formatOnSave": true,
-    "editor.fontLigatures": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.minimap.enabled": false,
     "editor.suggestSelection": "first",
@@ -21,7 +20,7 @@
 
     // workbench
     "workbench.startupEditor": "none",
-    "workbench.iconTheme": "vs-nomo-dark",
+    "workbench.iconTheme": "vscode-icons",
     "workbench.sideBar.location": "left",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.list.smoothScrolling": true,
@@ -53,15 +52,13 @@
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    // eslint
-    "eslint.alwaysShowStatus": true,
 
     // stylelint
     "css.validate": true,
     "less.validate": false,
     "scss.validate": false,
     "files.autoSaveDelay": 1000,
-    "stylelint.configFile": "./stylelint.config.js",
+    "stylelint.configFile": "./stylelint.config.mjs",
 
     // git
     "git.autofetch": true,
@@ -87,13 +84,14 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "emmet.includeLanguages": {
         "postcss": "css",
-        "javascript": "javascriptreact"
+        "javascript": "javascriptreact",
+        "typescript": "typescriptreact"
     },
     "emmet.showSuggestionsAsSnippets": true,
     "window.zoomLevel": 0,
 
     // npm
-    "npm.packageManager": "yarn",
+    "npm.packageManager": "pnpm",
     "npm.scriptExplorerAction": "run",
 
     //
@@ -114,8 +112,12 @@
     },
     "terminal.integrated.scrollback": 500000,
     "terminal.integrated.enablePersistentSessions": false,
+    "workbench.tree.enableStickyScroll": false,
+    "editor.stickyScroll.scrollWithEditor": false,
+    "editor.stickyScroll.enabled": false,
     "accessibility.signals.terminalBell": {
         "sound": "on"
     },
-    "terminal.integrated.enableVisualBell": true
+    "terminal.integrated.enableVisualBell": true,
+    "editor.fontFamily": "Consolas, Monaco, Menlo,'Courier New', monospace"
 }
